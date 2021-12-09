@@ -1,0 +1,124 @@
+# Comparing Groups
+This chapter describes a variety of methods to visualize comparisons between two or more groups.
+
+## Data Types
+Visualizations in this chapter have at least two data fields. At least one of those fields must be a nominal or ordinal data type (i.e., categorical). The other fields can be any data type, but are most often ratio or interval (i.e., continuous). We'll explore some methods to integrate three (maybe even four!) variables into the same chart.
+
+Here are a few example questions that would work with these charts:
+
+  * How do elementary math scores (continuous - ratio) vary by country (categorical - nominal)?
+  * Which company (categorical - nominal) has more employees (continuous - ratio)?
+  * Are customers more likely to click on an advertisement (continuous - ratio) that is small, medium, or large (categorical - ordinal)?
+  * Which type of leadership training (categorical) for senior managers is associated with higher levels of job engagement (continuous - interval) in their employees?
+  * Are citizens more or less likely to vote for a Republican, Democrat, or third-party candidate (categorical - nominal) depending on which region of the USA the live in (categorical - nominal)? HEATMAP
+  * How many customers make a purchase (continuous - ratio) after seeing an advertisement (categorical - ordinal) and then being offered a coupon (categorical - ordinal)? SANKEY
+  
+## Bar Charts
+  * Which company (categorical - nominal) has more employees (continuous - ratio)?
+
+## Paired Bar Charts
+  * How do elementary math scores (continuous - ratio) and reading scores (continuous - ratio) vary by country (categorical - nominal)?
+## Stacked Bar Charts
+
+## Diverging Bar Charts
+
+
+## Dot Plot
+
+## Heatmap
+
+## Sankey Diagram
+
+## Waterfall Chart
+```{r}
+circleFun <- function(center = c(0,0),diameter = 1, npoints = 100, name){
+    r = diameter / 2
+    tt <- seq(0,2*pi,length.out = npoints)
+    xx <- center[1] + r * cos(tt)
+    yy <- center[2] + r * sin(tt)
+    return(data.frame(x = xx, y = yy, name = name, dia = diameter))
+}
+
+
+datA <- circleFun(diameter = .8,npoints = 100, name = "A")
+datB <- circleFun(diameter = .3,npoints = 100, name = "B")
+datC <- circleFun(diameter = .5,npoints = 100, name = "C")
+
+dat <- bind_rows(datA, datB, datC)
+#geom_path will do open circles, geom_polygon will do filled circles
+ggplot() + 
+  geom_path(data = dat[dat$name == "A",],aes(x,y, color = "black")) + 
+  geom_path(data = dat[dat$name == "B",],aes(x,y, color = "orange")) + 
+  geom_path(data = dat[dat$name == "C",],aes(x,y, color = "purple")) + 
+  # facet_grid(~name)+
+  xlim(-1, 1) + ylim(-1,1) + 
+  geom_text(data = dat, aes(label = dia, x = 0, y = 0))+
+  theme_kirby
+  
+theme_kirby <- theme_minimal() +
+  theme(aspect.ratio = 1,
+        panel.grid = element_blank(),
+        axis.text = element_blank(),
+        legend.position = ""
+        # base_size=12,
+        # base_family='Helvetica',
+        # base_line_size=base_size/24,
+        # base_rect_size=base_size/24,
+        # border=FALSE
+        )
+
+ggplot2::theme_get()
+
+legend <- NULL
+grid <- "x-only"
+
+theme_kirby <- function(base_theme = ggplot2::theme_get(), legend = "right", aspect = NULL, grid = "none"){
+  rt <- base_theme
+  
+  if(legend %in% c("none", "left", "right", "bottom", "top")){
+    rt <- 
+      rt + 
+      theme(legend.position = legend)
+  }
+  
+  if(grid %in% c("none", "x-only", "y-only", "both")){
+    
+    xline <- 
+      case_when(grid == "none"  | grid == "y-only" ~ 'element_blank()',
+                grid == "x-only" | grid == "both"~ 'element_line(color = "gray", size = .5, linetype = "solid")')
+    
+    yline <- 
+      case_when(grid == "none" | grid == "x-only" ~ 'element_blank()',
+                grid == "y-only" | grid == "both" ~ 'element_line(color = "gray", size = .5, linetype = "solid")')
+    
+    rt <- 
+      rt +
+      theme(panel.grid.major.x = eval(parse(text = xline)),
+            panel.grid.minor.x = eval(parse(text = xline)),
+            panel.grid.major.y = eval(parse(text = yline)),
+            panel.grid.minor.y = eval(parse(text = yline)))
+    
+  }
+  
+  return(rt)
+  
+}
+
+str(element_line)
+
+p <- diamonds %>% sample_n(1000) %>% 
+  ggplot(aes(x = carat, y = price, color = cut)) + geom_point()
+
+p +
+  theme_kirby(
+    base_theme = theme_minimal(),
+    grid = "both",
+    legend = "none"
+    )
+
+p +
+  theme_minimal()+
+  theme(panel.grid.major.x = eval(parse(text = xline)),
+        panel.grid.minor.x = eval(parse(text = xline)))
+```
+

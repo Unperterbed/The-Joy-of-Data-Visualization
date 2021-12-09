@@ -1,0 +1,11 @@
+plot_ly(
+  data = df,
+  x = ~cut,
+  y = ~price,
+  type = "bar"
+)
+
+ggplot(
+  data = df,
+  mapping = aes(x=cut, y=price)
+) + geom_col()

@@ -1,0 +1,16 @@
+about
+usage
+render-book
+preview-book
+why-data-visualization
+history-of-data-visualization
+our-brains-want-it
+key-resources-and-inspiration
+getting-started
+r-and-rstudio
+installing-packages
+anatomy-of-data
+what-is-data-what-is-information
+where-does-data-come-from
+what-are-the-types-of-data
+how-do-we-visualize-data

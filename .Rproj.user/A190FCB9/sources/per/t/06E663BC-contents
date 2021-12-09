@@ -1,0 +1,37 @@
+# Anatomy of Data
+
+## What is data? What is information?
+
+
+## Where does data come from?
+  * All around you!
+
+## What are the types of data?
+I'll be following the Steven's Typology. This came about from Stevens' (1946) publication that described four types:
+
+  * Ratio
+  * Interval
+  * Ordinal
+  * Nominal
+  
+## How do we visualize data?
+We create a graph of data by *encoding* the values into various visual properties, such as:
+
+  * Color
+  * Length/Width
+  * Area
+  * Text
+  * Transparency
+  * Angle
+  * Position
+  And more!
+  
+Data visualization is the process of *encoding natural phenomena into data which is translated into a visual representation.*
+
+Information is always lost in translation, and data visualization is no exception. Sometimes, we fail to capture important information about the phenomena into the data we store. For instance, you may have taken an employee experience survey that asked you to "rate your job satisfaction on a scale from 1 to 10 (highest)." The data we capture is incredibly simple (an integer between 1 and 10), but your holistic experience on the job is rich and nuanced and detailed and diverse! A great deal of information about the phenomena we're interested in is *not* captured with this question. That doesn't mean it's a bad question, only that there's a gap between the reality of the phenomena and the data we've captured. We could ask the same question, but instead of requiring a numeric response, allow the employee to write a text response. This would certainly capture more information about their true experience, but this type of data is much more complex to work with and derive insights from. In this way, the data we capture is the first (and usually biggest) limitation on our ability to understand the world around us.
+
+Other times, our visualizations fail to capture meaningful aspects of our data (and thus, the phenomena itself). After surveying 100 employees, we might use a bar plot to show that the average job satisfaction score is 9.2 out of 10. Yahoo! But the average score of all 100 employees is only one piece of information, and we might have several other questions: What was the lowest and highest scores? Did the scores vary by work team? Have scores gone up or down over time? How do these scores compare to other similar companies? And so on.
+
+Generally speaking, more information is lost during the translation from reality to data than from data to visualization. Gathering data which faithfully and fully represents natural phenomena is difficult, tedious, and complex. Scientists spend years learning about a particular category of phenomena (medicine, biology, psychology, etc.) and being trained in the methods to capture meaningful data related to their discipline. This book mostly deals with the second phase of translation: data to visualization. It contains numerous examples of visualization techniques, describes the terminology and proper usage of various charts and graphs, and provides the statistical code to reproduce the examples in the R programming language.
+
+This app demonstrates a few interactive ways to see how data is encoded into various properties.

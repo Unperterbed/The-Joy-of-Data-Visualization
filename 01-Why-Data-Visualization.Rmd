@@ -1,0 +1,21 @@
+# Why Data Visualization
+
+Why does data need to be visualized?
+
+## History of Data Visualization
+
+Put links here to R and RStudio
+
+## Our Brains Want It
+
+The brain has a *lot* of muscle for receiving and interpreting spatial information. 
+
+## Key Resources and Inspiration
+  * Tableau Gallery
+  * Storytelling With Data
+  * Learning To See Data
+  * Ed Tufte's book
+  * Better Data Visualizations
+  * R Graphics Cookbook
+  * How Charts Lie
+  * Statistics Globe

@@ -1,0 +1,13 @@
+name: EncodingExamples
+title: EncodingExamples
+username:
+account: alt-f11
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5255859
+bundleId: 5321152
+url: https://alt-f11.shinyapps.io/EncodingExamples/
+when: 1638482859.10033
+lastSyncTime: 1638482859.10033
+asMultiple: FALSE
+asStatic: FALSE

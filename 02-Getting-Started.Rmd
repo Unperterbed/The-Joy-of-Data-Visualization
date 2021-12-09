@@ -1,0 +1,11 @@
+# Getting Started
+
+There are a few tools you'll need to install to take full advantage of this book.
+
+## R and RStudio
+
+Put links here to R and RStudio
+
+## Installing Packages
+
+Put code samples here to ggplot and plotly.
