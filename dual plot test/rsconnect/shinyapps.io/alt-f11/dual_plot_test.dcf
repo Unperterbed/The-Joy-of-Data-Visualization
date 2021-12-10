@@ -1,0 +1,13 @@
+name: dual_plot_test
+title: dual_plot_test
+username:
+account: alt-f11
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 5302304
+bundleId: 5353097
+url: https://alt-f11.shinyapps.io/dual_plot_test/
+when: 1639097612.07431
+lastSyncTime: 1639097612.07431
+asMultiple: FALSE
+asStatic: FALSE
