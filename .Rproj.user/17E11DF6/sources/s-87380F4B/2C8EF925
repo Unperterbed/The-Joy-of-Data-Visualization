@@ -3,7 +3,7 @@
     "path": "C:/Users/Kirby/OneDrive - Seattle Pacific University/R projects/The Joy of Graphics/02-Getting-Started.Rmd",
     "project_path": "02-Getting-Started.Rmd",
     "type": "r_markdown",
-    "hash": "0",
+    "hash": "979054505",
     "contents": "",
     "dirty": false,
     "created": 1639097530447.0,
@@ -12,15 +12,15 @@
     "properties": {
         "source_window_id": "",
         "Source": "Source",
-        "cursorPosition": "2,60",
+        "cursorPosition": "31,0",
         "scrollLine": "0"
     },
     "folds": "",
-    "lastKnownWriteTime": 1639098092,
+    "lastKnownWriteTime": 1639112848,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1639098092562,
+    "last_content_update": 1639112848964,
     "read_only": false,
     "read_only_alternatives": []
 }

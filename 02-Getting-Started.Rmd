@@ -1,6 +1,6 @@
 # Getting Started
 
-There are a few tools you'll need to install to take full advantage of this book.
+There are a few tools you'll need to install to take full advantage of this book. I'm assuming that most readers will have already had at least a brief introduction to R and/or Python. If you are completely brand new to the topic, I suggest starting with books or online courses designed to teach the fundamental skills
 
 ## Interactive and Replicable
 
@@ -12,18 +12,29 @@ Throughout this book, you'll find mini-apps that let you look under the hood to 
 knitr::include_app('https://alt-f11.shinyapps.io/dual_plot_test/', height = '600px')
 ```
 
-## RStudio
+## Developer Environments and Programming Languages
 
-Put links here to download and install RStudio
+Many data scientists and analysts write their code in an integrated development environment (IDE). An IDE is a software program that brings a suite of useful tools and capabilities to help write code more quickly and easily.
 
-## R and Python
+RStudio is an IDE designed for data science applications. It is optimized for R, but can also has features for working with other languages such as Python, SQL, Bash, and more.
 
-Put links here to download and install R and Python
+You can download a free version of RStudio, here: [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/).
 
-## Python in RStudio
+Another common IDE for Python is Jupyter labs, which is a browser-based platform commonly used for R and Python. As a browser-based application, it can be much faster to get started because you don't (usually) have to install anything on your computer. You can learn more and start using this platform at [https://jupyter.org/](https://jupyter.org/). 
 
-Brief description/screenshots showing how to use Python in RStudio
+This book primarily uses the R and Python programming languages. They are both open-source, meaning that they are fully and freely available to anyone and that thousands of people have contributed to their development over time. This has some advantages, such as the rapid pace of feature development and nearly constant updates to work with new technology and research techniques. Nearly every situation or problem you encounter has been solved by somebody who has shared a solution. There are also some disadvantages to such rapid development, such as the possibility that this book may become obsolete much faster than a closed-source application would!
 
-## Installing Packages/Libraries
+You can download R from [https://www.r-project.org/](https://www.r-project.org/), and you can download Python from [https://www.python.org/downloads/](https://www.python.org/downloads/).
 
-Put code samples here to ggplot and plotly.
+This book makes heavy use of these packages/libraries for each language:
+
+**R**
+
+  * `tidyverse` (which is a suite of other packages, such as `ggplot2` and `tidyr`)
+  * `plotly`
+  
+**Python**
+
+  * `pandas`
+  * `matplotlib`
+  * `seaborn`

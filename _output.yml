@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: |
         <li><a href="./">The Joy of Data Visualization</a></li>
       after: |
-        <li><a href="www.kirbywhite.io" target="blank">Created by Kirby White</a></li>
+        <li><a href="https:\\www.kirbywhite.io" target="blank">Created by Kirby White</a></li>
     edit: https://github.com/Unperterbed/The-Joy-of-Data-Visualization/edit/main/%s
     download: ["pdf", "epub"]
 bookdown::pdf_book:

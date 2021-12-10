@@ -14,3 +14,5 @@ what-is-data-what-is-information
 where-does-data-come-from
 what-are-the-types-of-data
 how-do-we-visualize-data
+cover-image-path-to-the-social-sharing-image-like-imagescover.jpg
+developer-environments-and-programming-languages

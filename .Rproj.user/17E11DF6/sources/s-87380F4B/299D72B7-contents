@@ -45,7 +45,7 @@ Most people struggle to spot the differences between ratio and interval data, an
 
 The kinds of charts you can build depend on the type of data you want to visualizate. This table gives a (non-exhaustive) sampling of the plots that might work for each combination of two variables:
 
-Variable 1  | Variable 2   |   Graphs
+Variable 1  | Variable 2   |   Possible Graphs
 ------------- | -------------   |     -------------
 Nominal    | Nominal          |   Chord diagram
 Nominal        | Ordinal      |   Stacked barplot
@@ -70,7 +70,7 @@ We create a graph of data by *encoding* the values into various visual propertie
   * Text
   * Angle
   * Position
-  And more!
+  * And more!
   
 Data visualization is the final step in a process of encoding natural phenomena into data and then translating data into visual properties.
 
