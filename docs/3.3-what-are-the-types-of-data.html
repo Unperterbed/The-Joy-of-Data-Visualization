@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta property="og:title" content="3.3 What are the types of data? | The Joy of Data Visualization" />
+<meta property="og:type" content="book" />
+<meta property="og:url" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/" />
+<meta property="og:image" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/images/JDV_book_cover.png" />
+<meta property="og:description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
+<meta name="github-repo" content="Unperterbed/The-Joy-of-Data-Visualization" />
+
+<meta name="author" content="Kirby D. White" />
+
+<meta name="date" content="2021-12-26" />
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+</script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<meta name="description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples.">
+
+<title>3.3 What are the types of data? | The Joy of Data Visualization</title>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="libs/navigation-1.1/tabsets.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+/* show arrow before summary tag as in bootstrap
+TODO: remove if boostrap in updated in html_document (rmarkdown#1485) */
+details > summary {
+  display: list-item;
+  cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container-fluid main-container">
+
+
+<div class="row">
+<div class="col-sm-12">
+<div id="TOC">
+<ul>
+<li><a href="index.html#about">About</a></li>
+<li><a href="resources.html#resources">Resources</a>
+<ul>
+<li><a href="0.1-data-repositories.html#data-repositories"><span class="toc-section-number">0.1</span> Data Repositories</a></li>
+</ul></li>
+<li><a href="1-why-data-visualization.html#why-data-visualization"><span class="toc-section-number">1</span> Why Data Visualization</a>
+<ul>
+<li><a href="1.1-history-of-data-visualization.html#history-of-data-visualization"><span class="toc-section-number">1.1</span> History of Data Visualization</a></li>
+<li><a href="1.2-our-brains-want-it.html#our-brains-want-it"><span class="toc-section-number">1.2</span> Our Brains Want It</a></li>
+<li><a href="1.3-key-resources-and-inspiration.html#key-resources-and-inspiration"><span class="toc-section-number">1.3</span> Key Resources and Inspiration</a></li>
+</ul></li>
+<li><a href="2-getting-started.html#getting-started"><span class="toc-section-number">2</span> Getting Started</a>
+<ul>
+<li><a href="2.1-interactive-and-replicable.html#interactive-and-replicable"><span class="toc-section-number">2.1</span> Interactive and Replicable</a></li>
+<li><a href="2.2-developer-environments-and-programming-languages.html#developer-environments-and-programming-languages"><span class="toc-section-number">2.2</span> Developer Environments and Programming Languages</a></li>
+<li><a href="2.3-book-organization.html#book-organization"><span class="toc-section-number">2.3</span> Book Organization</a></li>
+</ul></li>
+<li><a href="3-anatomy-of-data.html#anatomy-of-data"><span class="toc-section-number">3</span> Anatomy of Data</a>
+<ul>
+<li><a href="3.1-what-is-data-what-is-information.html#what-is-data-what-is-information"><span class="toc-section-number">3.1</span> What is data? What is information?</a></li>
+<li><a href="3.2-where-does-data-come-from.html#where-does-data-come-from"><span class="toc-section-number">3.2</span> Where does data come from?</a></li>
+<li><a href="3.3-what-are-the-types-of-data.html#what-are-the-types-of-data"><span class="toc-section-number">3.3</span> What are the types of data?</a></li>
+<li><a href="3.4-how-do-we-visualize-data.html#how-do-we-visualize-data"><span class="toc-section-number">3.4</span> How do we visualize data?</a></li>
+<li><a href="3.5-how-does-the-computer-store-data.html#how-does-the-computer-store-data"><span class="toc-section-number">3.5</span> How does the computer store data?</a></li>
+</ul></li>
+<li><a href="4-graphical-zoo.html#graphical-zoo"><span class="toc-section-number">4</span> Graphical Zoo</a>
+<ul>
+<li><a href="4.1-comparing-multiple-categories.html#comparing-multiple-categories"><span class="toc-section-number">4.1</span> Comparing Multiple Categories</a>
+<ul>
+<li><a href="4.1-comparing-multiple-categories.html#bar-charts"><span class="toc-section-number">4.1.1</span> Bar Charts</a></li>
+<li><a href="4.1-comparing-multiple-categories.html#marimekko-charts"><span class="toc-section-number">4.1.2</span> Marimekko Charts</a></li>
+<li><a href="4.1-comparing-multiple-categories.html#heatmaps"><span class="toc-section-number">4.1.3</span> Heatmaps</a></li>
+<li><a href="4.1-comparing-multiple-categories.html#radar-charts"><span class="toc-section-number">4.1.4</span> Radar Charts</a></li>
+<li><a href="4.1-comparing-multiple-categories.html#dot-plots"><span class="toc-section-number">4.1.5</span> Dot Plots</a></li>
+<li><a href="4.1-comparing-multiple-categories.html#gauge-and-bullet-charts"><span class="toc-section-number">4.1.6</span> Gauge and Bullet Charts</a></li>
+<li><a href="4.1-comparing-multiple-categories.html#bubble-charts"><span class="toc-section-number">4.1.7</span> Bubble Charts</a></li>
+<li><a href="4.1-comparing-multiple-categories.html#waterfall-charts"><span class="toc-section-number">4.1.8</span> Waterfall Charts</a></li>
+</ul></li>
+<li><a href="4.2-time-series-graphics.html#time-series-graphics"><span class="toc-section-number">4.2</span> Time-Series Graphics</a>
+<ul>
+<li><a href="4.2-time-series-graphics.html#waterfall-charts-again"><span class="toc-section-number">4.2.1</span> Waterfall Charts (again)</a></li>
+<li><a href="4.2-time-series-graphics.html#line-charts"><span class="toc-section-number">4.2.2</span> Line Charts</a></li>
+<li><a href="4.2-time-series-graphics.html#area-charts"><span class="toc-section-number">4.2.3</span> Area Charts</a></li>
+<li><a href="4.2-time-series-graphics.html#gantt-charts"><span class="toc-section-number">4.2.4</span> Gantt Charts</a></li>
+</ul></li>
+<li><a href="4.3-statisticaldistribution-insights.html#statisticaldistribution-insights"><span class="toc-section-number">4.3</span> Statistical/Distribution Insights</a>
+<ul>
+<li><a href="4.3-statisticaldistribution-insights.html#histograms"><span class="toc-section-number">4.3.1</span> Histograms</a></li>
+<li><a href="4.3-statisticaldistribution-insights.html#box-plots"><span class="toc-section-number">4.3.2</span> Box Plots</a></li>
+<li><a href="4.3-statisticaldistribution-insights.html#violin-charts"><span class="toc-section-number">4.3.3</span> Violin Charts</a></li>
+<li><a href="4.3-statisticaldistribution-insights.html#rainclouds"><span class="toc-section-number">4.3.4</span> Rainclouds</a></li>
+<li><a href="4.3-statisticaldistribution-insights.html#candlestick-charts"><span class="toc-section-number">4.3.5</span> Candlestick Charts</a></li>
+<li><a href="4.3-statisticaldistribution-insights.html#stem-and-leaf-plots"><span class="toc-section-number">4.3.6</span> Stem-and-Leaf Plots</a></li>
+<li><a href="4.3-statisticaldistribution-insights.html#principal-components"><span class="toc-section-number">4.3.7</span> Principal Components</a></li>
+<li><a href="4.3-statisticaldistribution-insights.html#scree-plots"><span class="toc-section-number">4.3.8</span> Scree Plots</a></li>
+<li><a href="4.3-statisticaldistribution-insights.html#multivariate-plots"><span class="toc-section-number">4.3.9</span> Multivariate Plots</a></li>
+</ul></li>
+<li><a href="4.4-geographic-and-spatial-data.html#geographic-and-spatial-data"><span class="toc-section-number">4.4</span> Geographic and Spatial Data</a>
+<ul>
+<li><a href="4.4-geographic-and-spatial-data.html#choropleth"><span class="toc-section-number">4.4.1</span> Choropleth</a></li>
+<li><a href="4.4-geographic-and-spatial-data.html#dot-density"><span class="toc-section-number">4.4.2</span> Dot Density</a></li>
+</ul></li>
+<li><a href="4.5-relationships-between-variables.html#relationships-between-variables"><span class="toc-section-number">4.5</span> Relationships Between Variables</a>
+<ul>
+<li><a href="4.5-relationships-between-variables.html#scatterplots"><span class="toc-section-number">4.5.1</span> Scatterplots</a></li>
+<li><a href="4.5-relationships-between-variables.html#correlation-matrix"><span class="toc-section-number">4.5.2</span> Correlation Matrix</a></li>
+<li><a href="4.5-relationships-between-variables.html#bubble-plots"><span class="toc-section-number">4.5.3</span> Bubble Plots</a></li>
+<li><a href="4.5-relationships-between-variables.html#parallel-coordinates"><span class="toc-section-number">4.5.4</span> Parallel Coordinates</a></li>
+<li><a href="4.5-relationships-between-variables.html#chordarc-diagram"><span class="toc-section-number">4.5.5</span> Chord/Arc Diagram</a></li>
+<li><a href="4.5-relationships-between-variables.html#network-diagram"><span class="toc-section-number">4.5.6</span> Network Diagram</a></li>
+<li><a href="4.5-relationships-between-variables.html#tree-diagram"><span class="toc-section-number">4.5.7</span> Tree Diagram</a></li>
+</ul></li>
+<li><a href="4.6-flows-and-nested-data.html#flows-and-nested-data"><span class="toc-section-number">4.6</span> Flows and Nested Data</a>
+<ul>
+<li><a href="4.6-flows-and-nested-data.html#pie-charts"><span class="toc-section-number">4.6.1</span> Pie Charts</a></li>
+<li><a href="4.6-flows-and-nested-data.html#funnelpyramid-charts"><span class="toc-section-number">4.6.2</span> Funnel/Pyramid Charts</a></li>
+<li><a href="4.6-flows-and-nested-data.html#treemap"><span class="toc-section-number">4.6.3</span> Treemap</a></li>
+<li><a href="4.6-flows-and-nested-data.html#sunburst"><span class="toc-section-number">4.6.4</span> Sunburst</a></li>
+</ul></li>
+<li><a href="4.7-famous-visualizations.html#famous-visualizations"><span class="toc-section-number">4.7</span> Famous Visualizations</a>
+<ul>
+<li><a href="4.7-famous-visualizations.html#nightingale-plot"><span class="toc-section-number">4.7.1</span> Nightingale Plot</a></li>
+<li><a href="4.7-famous-visualizations.html#napoleans-march"><span class="toc-section-number">4.7.2</span> Napolean’s March</a></li>
+<li><a href="4.7-famous-visualizations.html#john-snows-cholera-outbreak"><span class="toc-section-number">4.7.3</span> John Snow’s Cholera Outbreak</a></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="row">
+<div class="col-sm-12">
+<div id="what-are-the-types-of-data" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> What are the types of data?</h2>
+<p>There are several frameworks to describe different types of data. The Stevens Typology (Stevens, 1946) is the most common among social scientists, so I’ll use its language throughout this book. Stevens describes four types of data:</p>
+<ul>
+<li>Ratio (salary in USD, height in inches, etc.)</li>
+<li>Interval (attitude scales, Celsius and Fahrenheit, etc.)</li>
+<li>Ordinal (strongly agree &gt; strongly disagree, Freshmen &lt; Senior, etc.)</li>
+<li>Nominal (job title, country of birth, etc.)</li>
+</ul>
+<p>These characteristics of data are the bedrock for all visualizations. Most graphs only work with certain types of data, so being able to identify these properties in your data will help you more quickly understand the myriad ways you can represent it visually. Let’s go into a little more detail about each type.</p>
+<p><em>Nominal</em> data has no known magnitude or rank order. For instance, we might look at the GDP for a group of countries. Country is a nominal collection of data because the country names simply indicate that the countries are different from one another. Other examples:</p>
+<ul>
+<li>College degree (psychology, business, literature, etc.)</li>
+<li>Colors (red, green, etc.)</li>
+<li>Vehicle manufacturers (Tesla, Audi, Mercedes, etc.)</li>
+</ul>
+<p><em>Ordinal</em> data has an unknown magnitude but a known rank order. Consider a marathon where each runner is given a rank once they finish. We know that the runner who came in first place had a better time than the runner in second place, but we don’t know how much faster they were. Were they twice as fast? Only one second faster? We don’t know, and that’s what makes this data ordinal. Other examples:</p>
+<ul>
+<li>Agreement scales (strongly disagree &lt; strongly agree)</li>
+<li>Job seniority (CEO &gt; vice president &gt; manager)</li>
+<li>Academic grades (A &gt; B &gt; C)</li>
+</ul>
+<p>Nominal and ordinal data can be called “categorical” data because they primarily depict different categories. Our next two, interval and ratio, are “continuous” types of data, because they contain values that be anywhere within a given range.</p>
+<p><em>Interval</em> data has a known magnitude and rank order. The Celsius temperature scale is a common example of this, with the range from 0 to 100 degrees providing an even gradient to express the amount of heat. We know that 35 is more than 28.5, and that the difference is 6.5 units. Other examples where interval data might be collected:</p>
+<ul>
+<li>Happiness scales</li>
+<li>Job satisfaction surveys</li>
+<li>Personality tests</li>
+</ul>
+<p><em>Ratio</em> data has a known magnitude and rank order, just like interval data. The difference between these two is that interval data does not have a meaningful zero value, but ratio does. When the temperature reaches 0 degrees (in Celsius), does that mean that there is no temperature? Of course not! The 0 in Celsius is a useful baseline for us in our day-to-day lives, but it isn’t an accurate expression of how quickly a group molecules are vibrating. However, the Kelvin temperature scale was intentionally designed to be a ratio scale, which is why 00 degrees Kelvin is called “absolute zero” and indicates the complete absence of temperature. Here are a few other examples you might come across:
+* Salary (in dollars)
+* # Products sold
+* miles per hour</p>
+<p>Most people struggle to spot the differences between ratio and interval data, and that’s okay. It rarely matters for visualizing data, but can be important for other types of data analytics, which is why it’s worth mentioning. There are also some data that can move between categories, such as time or geospatial data. We’ll cover these in more detail in the examples in a later chapter.</p>
+<p>The kinds of charts you can build depend on the type of data you want to visualizate. This table gives a (non-exhaustive) sampling of the plots that might work for each combination of two variables:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Variable 1</th>
+<th>Variable 2</th>
+<th>Possible Graphs</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Nominal</td>
+<td>Nominal</td>
+<td>Chord diagram</td>
+</tr>
+<tr class="even">
+<td>Nominal</td>
+<td>Ordinal</td>
+<td>Stacked barplot</td>
+</tr>
+<tr class="odd">
+<td>Nominal</td>
+<td>Interval</td>
+<td>Spider plot</td>
+</tr>
+<tr class="even">
+<td>Nominal</td>
+<td>Ratio</td>
+<td>Jitter plot</td>
+</tr>
+<tr class="odd">
+<td>Ordinal</td>
+<td>Ordinal</td>
+<td>Heatmap</td>
+</tr>
+<tr class="even">
+<td>Ordinal</td>
+<td>Interval</td>
+<td>Boxplot</td>
+</tr>
+<tr class="odd">
+<td>Ordinal</td>
+<td>Ratio</td>
+<td>Barplot</td>
+</tr>
+<tr class="even">
+<td>Interval</td>
+<td>Interval</td>
+<td>Lineplot</td>
+</tr>
+<tr class="odd">
+<td>Interval</td>
+<td>Ratio</td>
+<td>Scatterplot</td>
+</tr>
+<tr class="even">
+<td>Ratio</td>
+<td>Ratio</td>
+<td>Log-Transformed Scatterplot</td>
+</tr>
+</tbody>
+</table>
+<p>Generally speaking, these four data types are fundamental for understanding the phenomena you wish to represent and the options available for visualizing them. There are, of course, exceptions and special cases that don’t fit neatly into this framework, which is why some academic fields may use a modified or completely different framework altogether. However, for most purposes, the Steven’s typology works well enough.</p>
+<p>However, there are some common visualizations that use data in a way that I think deserves their own categories, even though they can (strictly speaking) be placed into one of Steven’s four types. These are:</p>
+<ul>
+<li>Period</li>
+<li>Duration</li>
+<li>Flow</li>
+</ul>
+<p><em>Period</em> and <em>duration</em> data are both used to represent aspects of time. You can think of it as “a time period” (e.g., January 1, 2020 - June 30, 2020) and “a duration of time” (e.g., 4 hours 32 minutes and 18 seconds). Very often, period and duration data needs to be derived from a source of raw data, rather than being stored on its own. Consider a shipping company that is tracking the progress of several trucks in its fleet as they make deliveries. They can very easily log progress with a table like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Truck ID</th>
+<th>Status</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>123</td>
+<td>Departure</td>
+<td>2020-03-05 08:17:42</td>
+</tr>
+<tr class="even">
+<td>456</td>
+<td>Departure</td>
+<td>2020-03-05 08:22:06</td>
+</tr>
+<tr class="odd">
+<td>789</td>
+<td>Departure</td>
+<td>2020-03-05 08:23:58</td>
+</tr>
+<tr class="even">
+<td>456</td>
+<td>Arrival</td>
+<td>2020-03-05 09:14:33</td>
+</tr>
+<tr class="odd">
+<td>123</td>
+<td>Arrival</td>
+<td>2020-03-05 10:02:56</td>
+</tr>
+<tr class="even">
+<td>789</td>
+<td>Arrival</td>
+<td>2020-03-05 10:27:44</td>
+</tr>
+</tbody>
+</table>
+<p>By storing raw data as precise timestamps, they will always be able to aggregate their records into other useful information, such as:</p>
+<ul>
+<li>How long did it take 123 to arrive at its destination?</li>
+<li>What is the average trip length?</li>
+<li>How many trips took longer than 1 hour?</li>
+<li>and many more!</li>
+</ul>
+<p><em>Flow</em> data is simple to store but represents the complex movements of a “stock,” which is just an amount of something. This can be used to create “stock and flow” diagrams to portray the process of movement, or Sankey diagrams to portray the proportions of movement. Here is a simple example of a stock and flow chart:
+<img src="images/stock%20and%20flow%20intro.png" />
+Stock and Flow diagrams model the movement of a stock and the variables affecting it. These emphasize the mechanics and process of the flow, rather than the amounts currently flowing. Relatedly, a Sankey diagram emphasizes the quantities of flow during a given time period. This Sankey diagram shows the (completely fictional) “flow” of students through university. They apply as high-school or transfer students, select a major, and graduate or not:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<div id="htmlwidget-f554b4b1c96eb8f8914e" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-f554b4b1c96eb8f8914e">{"x":{"visdat":{"1c5c311a355":["function () ","plotlyVisDat"]},"cur_data":"1c5c311a355","attrs":{"1c5c311a355":{"orientation":"h","node":{"label":["High School","Transfer","Business","Psychology","Biology","Graduated","Not Graduated"],"color":["blue","blue","purple","orange","grey","green","black"],"pad":15,"thickness":20,"line":{"color":"black","width":0.5}},"link":{"source":[0,0,0,1,1,1,2,2,3,3,4,4],"target":[2,3,4,2,3,4,5,6,5,6,5,6],"value":[400,350,200,150,125,100,525,25,460,15,225,75]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"<b>University Students<\/b> by application status, major choice, and graduation status","font":{"size":10},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"orientation":"h","node":{"label":["High School","Transfer","Business","Psychology","Biology","Graduated","Not Graduated"],"color":["blue","blue","purple","orange","grey","green","black"],"pad":15,"thickness":20,"line":{"color":"black","width":0.5}},"link":{"source":[0,0,0,1,1,1,2,2,3,3,4,4],"target":[2,3,4,2,3,4,5,6,5,6,5,6],"value":[400,350,200,150,125,100,525,25,460,15,225,75]},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 3.1: Sankey diagrams depict the sources and flow of a stock, as well as the proportions of their values.
+</p>
+</div>
+<p>You are probably already familiar with a “flow chart.” These charts are visual depictions of a decision making process, and are rarely (in my experience, anyways) connected to a raw data source. Nonetheless, they are an excellent way to communicate natural phenomena or other processes. These will be covered in chapter [###].</p>
+<p>We’ll cover the code to create Sankey diagrams later on.</p>
+</div>
+<p style="text-align: center;">
+<a href="3.2-where-does-data-come-from.html"><button class="btn btn-default">Previous</button></a>
+<a href="3.4-how-do-we-visualize-data.html"><button class="btn btn-default">Next</button></a>
+</p>
+</div>
+</div>
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+$(document).ready(function () {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+});
+
+</script>
+
+</body>
+</html>

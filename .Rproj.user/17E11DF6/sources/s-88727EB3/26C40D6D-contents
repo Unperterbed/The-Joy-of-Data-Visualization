@@ -1,0 +1,13 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+| Type             |        R |        Python |
+|Ratio and Interval| * bullet |             |
+|                  | * bullet 2|            |

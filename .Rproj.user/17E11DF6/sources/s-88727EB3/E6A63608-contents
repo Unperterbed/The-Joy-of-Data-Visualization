@@ -1,0 +1,13 @@
+df <- data.frame(
+  Nominal = factor(x = c("Mother Theresa", "Mahatma Gandhi", "Martin Luther King Jr.")),
+  Ordinal = factor(x = c("Low", "Medium", "High"),
+                   levels = c("Low", "Medium", "High"),
+                   ordered = TRUE),
+  Interval = as.integer(c(1,2,3)),
+  Ratio = c(1.01, 2.02, 3.03)
+)
+
+
+str(df)
+
+attributes(df)

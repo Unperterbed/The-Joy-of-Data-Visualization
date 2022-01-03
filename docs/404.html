@@ -11,7 +11,7 @@
   <meta property="og:title" content="Page not found | The Joy of Data Visualization" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/" />
-  
+  <meta property="og:image" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/images/JDV_book_cover.png" />
   <meta property="og:description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
   <meta name="github-repo" content="Unperterbed/The-Joy-of-Data-Visualization" />
 
@@ -19,12 +19,12 @@
   <meta name="twitter:title" content="Page not found | The Joy of Data Visualization" />
   
   <meta name="twitter:description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
-  
+  <meta name="twitter:image" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/images/JDV_book_cover.png" />
 
-<meta name="author" content="Kirby White" />
+<meta name="author" content="Kirby D. White" />
 
 
-<meta name="date" content="2021-12-09" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -53,6 +53,17 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<script src="libs/d3-4.13.0/d3.min.js"></script>
+<script src="libs/d3-tip-0.8.1/index.js"></script>
+<link href="libs/chorddiag-0.1.2.9000/chorddiag.css" rel="stylesheet" />
+<script src="libs/chorddiag-0.1.2.9000/chorddiag.js"></script>
 
 
 
@@ -73,24 +84,91 @@
 <li><a href="./">The Joy of Data Visualization</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> cover-image: path to the social sharing image like images/cover.jpg</a></li>
-<li class="chapter" data-level="2" data-path="why-data-visualization.html"><a href="why-data-visualization.html"><i class="fa fa-check"></i><b>2</b> Why Data Visualization</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="why-data-visualization.html"><a href="why-data-visualization.html#history-of-data-visualization"><i class="fa fa-check"></i><b>2.1</b> History of Data Visualization</a></li>
-<li class="chapter" data-level="2.2" data-path="why-data-visualization.html"><a href="why-data-visualization.html#our-brains-want-it"><i class="fa fa-check"></i><b>2.2</b> Our Brains Want It</a></li>
-<li class="chapter" data-level="2.3" data-path="why-data-visualization.html"><a href="why-data-visualization.html#key-resources-and-inspiration"><i class="fa fa-check"></i><b>2.3</b> Key Resources and Inspiration</a></li>
+<li class="chapter" data-level="0.1" data-path="resources.html"><a href="resources.html#data-repositories"><i class="fa fa-check"></i><b>0.1</b> Data Repositories</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting Started</a>
+<li class="chapter" data-level="1" data-path="why-data-visualization.html"><a href="why-data-visualization.html"><i class="fa fa-check"></i><b>1</b> Why Data Visualization</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="getting-started.html"><a href="getting-started.html#interactive-and-replicable"><i class="fa fa-check"></i><b>3.1</b> Interactive and Replicable</a></li>
-<li class="chapter" data-level="3.2" data-path="getting-started.html"><a href="getting-started.html#developer-environments-and-programming-languages"><i class="fa fa-check"></i><b>3.2</b> Developer Environments and Programming Languages</a></li>
+<li class="chapter" data-level="1.1" data-path="why-data-visualization.html"><a href="why-data-visualization.html#history-of-data-visualization"><i class="fa fa-check"></i><b>1.1</b> History of Data Visualization</a></li>
+<li class="chapter" data-level="1.2" data-path="why-data-visualization.html"><a href="why-data-visualization.html#our-brains-want-it"><i class="fa fa-check"></i><b>1.2</b> Our Brains Want It</a></li>
+<li class="chapter" data-level="1.3" data-path="why-data-visualization.html"><a href="why-data-visualization.html#key-resources-and-inspiration"><i class="fa fa-check"></i><b>1.3</b> Key Resources and Inspiration</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html"><i class="fa fa-check"></i><b>4</b> Anatomy of Data</a>
+<li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-is-data-what-is-information"><i class="fa fa-check"></i><b>4.1</b> What is data? What is information?</a></li>
-<li class="chapter" data-level="4.2" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#where-does-data-come-from"><i class="fa fa-check"></i><b>4.2</b> Where does data come from?</a></li>
-<li class="chapter" data-level="4.3" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-are-the-types-of-data"><i class="fa fa-check"></i><b>4.3</b> What are the types of data?</a></li>
-<li class="chapter" data-level="4.4" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#how-do-we-visualize-data"><i class="fa fa-check"></i><b>4.4</b> How do we visualize data?</a></li>
+<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#interactive-and-replicable"><i class="fa fa-check"></i><b>2.1</b> Interactive and Replicable</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#developer-environments-and-programming-languages"><i class="fa fa-check"></i><b>2.2</b> Developer Environments and Programming Languages</a></li>
+<li class="chapter" data-level="2.3" data-path="getting-started.html"><a href="getting-started.html#book-organization"><i class="fa fa-check"></i><b>2.3</b> Book Organization</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html"><i class="fa fa-check"></i><b>3</b> Anatomy of Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-is-data-what-is-information"><i class="fa fa-check"></i><b>3.1</b> What is data? What is information?</a></li>
+<li class="chapter" data-level="3.2" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#where-does-data-come-from"><i class="fa fa-check"></i><b>3.2</b> Where does data come from?</a></li>
+<li class="chapter" data-level="3.3" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-are-the-types-of-data"><i class="fa fa-check"></i><b>3.3</b> What are the types of data?</a></li>
+<li class="chapter" data-level="3.4" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#how-do-we-visualize-data"><i class="fa fa-check"></i><b>3.4</b> How do we visualize data?</a></li>
+<li class="chapter" data-level="3.5" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#how-does-the-computer-store-data"><i class="fa fa-check"></i><b>3.5</b> How does the computer store data?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphical-zoo.html"><a href="graphical-zoo.html"><i class="fa fa-check"></i><b>4</b> Graphical Zoo</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#comparing-multiple-categories"><i class="fa fa-check"></i><b>4.1</b> Comparing Multiple Categories</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#bar-charts"><i class="fa fa-check"></i><b>4.1.1</b> Bar Charts</a></li>
+<li class="chapter" data-level="4.1.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#marimekko-charts"><i class="fa fa-check"></i><b>4.1.2</b> Marimekko Charts</a></li>
+<li class="chapter" data-level="4.1.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#heatmaps"><i class="fa fa-check"></i><b>4.1.3</b> Heatmaps</a></li>
+<li class="chapter" data-level="4.1.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#radar-charts"><i class="fa fa-check"></i><b>4.1.4</b> Radar Charts</a></li>
+<li class="chapter" data-level="4.1.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#dot-plots"><i class="fa fa-check"></i><b>4.1.5</b> Dot Plots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#gauge-and-bullet-charts"><i class="fa fa-check"></i><b>4.1.6</b> Gauge and Bullet Charts</a></li>
+<li class="chapter" data-level="4.1.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#waterfall-charts"><i class="fa fa-check"></i><b>4.1.7</b> Waterfall Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#time-series-graphics"><i class="fa fa-check"></i><b>4.2</b> Time-Series Graphics</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#waterfall-charts-again"><i class="fa fa-check"></i><b>4.2.1</b> Waterfall Charts (again)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#line-charts"><i class="fa fa-check"></i><b>4.2.2</b> Line Charts</a></li>
+<li class="chapter" data-level="4.2.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#area-charts"><i class="fa fa-check"></i><b>4.2.3</b> Area Charts</a></li>
+<li class="chapter" data-level="4.2.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#gantt-charts"><i class="fa fa-check"></i><b>4.2.4</b> Gantt Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#statisticaldistribution-insights"><i class="fa fa-check"></i><b>4.3</b> Statistical/Distribution Insights</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#histograms"><i class="fa fa-check"></i><b>4.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="4.3.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#box-plots"><i class="fa fa-check"></i><b>4.3.2</b> Box Plots</a></li>
+<li class="chapter" data-level="4.3.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#violin-charts"><i class="fa fa-check"></i><b>4.3.3</b> Violin Charts</a></li>
+<li class="chapter" data-level="4.3.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#rainclouds"><i class="fa fa-check"></i><b>4.3.4</b> Rainclouds</a></li>
+<li class="chapter" data-level="4.3.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#candlestick-charts"><i class="fa fa-check"></i><b>4.3.5</b> Candlestick Charts</a></li>
+<li class="chapter" data-level="4.3.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#stem-and-leaf-plots"><i class="fa fa-check"></i><b>4.3.6</b> Stem-and-Leaf Plots</a></li>
+<li class="chapter" data-level="4.3.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#principal-components"><i class="fa fa-check"></i><b>4.3.7</b> Principal Components</a></li>
+<li class="chapter" data-level="4.3.8" data-path="graphical-zoo.html"><a href="graphical-zoo.html#scree-plots"><i class="fa fa-check"></i><b>4.3.8</b> Scree Plots</a></li>
+<li class="chapter" data-level="4.3.9" data-path="graphical-zoo.html"><a href="graphical-zoo.html#multivariate-plots"><i class="fa fa-check"></i><b>4.3.9</b> Multivariate Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#geographic-and-spatial-data"><i class="fa fa-check"></i><b>4.4</b> Geographic and Spatial Data</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#choropleth"><i class="fa fa-check"></i><b>4.4.1</b> Choropleth</a></li>
+<li class="chapter" data-level="4.4.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#dot-density"><i class="fa fa-check"></i><b>4.4.2</b> Dot Density</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#relationships-between-variables"><i class="fa fa-check"></i><b>4.5</b> Relationships Between Variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#scatterplots"><i class="fa fa-check"></i><b>4.5.1</b> Scatterplots</a></li>
+<li class="chapter" data-level="4.5.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#bubble-charts"><i class="fa fa-check"></i><b>4.5.2</b> Bubble Charts</a></li>
+<li class="chapter" data-level="4.5.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#correlation-matrix"><i class="fa fa-check"></i><b>4.5.3</b> Correlation Matrix</a></li>
+<li class="chapter" data-level="4.5.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#parallel-coordinates"><i class="fa fa-check"></i><b>4.5.4</b> Parallel Coordinates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#flows-and-nested-data"><i class="fa fa-check"></i><b>4.6</b> Flows and Nested Data</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#pie-charts"><i class="fa fa-check"></i><b>4.6.1</b> Pie Charts</a></li>
+<li class="chapter" data-level="4.6.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#funnelpyramid-charts"><i class="fa fa-check"></i><b>4.6.2</b> Funnel/Pyramid Charts</a></li>
+<li class="chapter" data-level="4.6.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#treemap"><i class="fa fa-check"></i><b>4.6.3</b> Treemap</a></li>
+<li class="chapter" data-level="4.6.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#chordarc-diagram"><i class="fa fa-check"></i><b>4.6.4</b> Chord/Arc Diagram</a></li>
+<li class="chapter" data-level="4.6.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#network-diagram"><i class="fa fa-check"></i><b>4.6.5</b> Network Diagram</a></li>
+<li class="chapter" data-level="4.6.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#tree-diagram"><i class="fa fa-check"></i><b>4.6.6</b> Tree Diagram</a></li>
+<li class="chapter" data-level="4.6.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#sunburst"><i class="fa fa-check"></i><b>4.6.7</b> Sunburst</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#famous-visualizations"><i class="fa fa-check"></i><b>4.7</b> Famous Visualizations</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#nightingale-plot"><i class="fa fa-check"></i><b>4.7.1</b> Nightingale Plot</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#napoleans-march"><i class="fa fa-check"></i><b>4.7.2</b> Napolean’s March</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#john-snows-cholera-outbreak"><i class="fa fa-check"></i><b>4.7.3</b> John Snow’s Cholera Outbreak</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#election-maps-trumps-vs-clintons"><i class="fa fa-check"></i><b>4.7.4</b> Election Maps (Trump’s vs Clinton’s)</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https:\\www.kirbywhite.io" target="blank">Created by Kirby White</a></li>
@@ -147,12 +225,12 @@ gitbook.start({
 "instapaper": false,
 "vk": false,
 "whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin"]
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
-"size": 2
+"family": "sans serif",
+"size": 3
 },
 "edit": {
 "link": "https://github.com/Unperterbed/The-Joy-of-Data-Visualization/edit/main/%s",
@@ -166,14 +244,18 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
 },
 "toc": {
-"collapse": "subsection"
-}
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"fig_caption": true,
+"number_sections": true,
+"split_by": "section"
 });
 });
 </script>

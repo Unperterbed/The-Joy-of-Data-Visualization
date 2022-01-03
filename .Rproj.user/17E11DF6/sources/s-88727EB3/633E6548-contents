@@ -1,0 +1,141 @@
+# Graphical Zoo
+```{r include=FALSE}
+library(tidyverse)
+theme_set(theme_minimal())
+theme_update(panel.grid = element_blank(),
+             rect = element_rect(fill = "transparent"))
+```
+
+This chapter serves as a menagerie of different types of visualization. My intention is to quickly let you see a variety of chart types, point out their encoding mechanisms, and help you become more familiar with the role of data types and why they are so fundamental to visualization (even though it seems very boring).
+
+The graphics are arranged into categories based on their primary purpose or features, and not necessarily their similarity. For instance, histograms and bar charts can look nearly identical but have radically different purposes. Each category serves as the basis for the majority of the chapters in this book, which is where you can find additional examples, reproducible code snippets, and possibly the history of each chart or anecdotes about their famous (or infamous) uses!
+
+## Comparing Multiple Categories
+### Bar Charts
+Bar charts are one of the most fundamental graphs. They always have at least one categorical (i.e., either nominal or ordinal) and one continuous (i.e., interval or ratio) variable. The categorical variable is encoded in the position of each bar. It can help your audience understand the chart better if you put some thought into the order of the bars. If your categorical variable is ordinal (e.g., small, medium, large) then it probably makes sense to ensure that the bars are also in that order. If your variable is nominal, the order may not matter at all, or you'll want to order them by the value of their corresponding continuous value, perhaps in ascending or descending order.
+
+This example comes from a dataset of jewelry sales, specifically diamonds. Each diamond is graded based on the quality of its cut (ordinally, from fair to ideal) and has a sale price. When we calculate the average price for each quality grade, we can visualize it with this bar chart:
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- 
+  ggplot2::diamonds %>% 
+  group_by(cut) %>% 
+  summarize(price = mean(price),
+            table = mean(table),
+            depth = mean(depth))
+
+fig <- df %>% 
+  ggplot(aes(x = cut,
+             y = price)) + geom_col() + labs(x = "Cut Quality", y = "Average Price (in USD)", title = "Diamond Prices by Cut Quality")
+
+fig
+```
+
+Bar charts can contain more than the two required variables. For instance, this bar chart displays the price of diamonds by cut quality (ordinal) _and_ color clarity (ordinal), and is technically called a grouped bar chart. We make a separate bar for each combination of cut and clarity. The bars are grouped together based on their cut, and put in order of their clarity. The groups are also in order of cut quality. Notice that clarity is encoded two ways: with bar position _and_ with color. The addition of color means that we can avoid printing the label for each clarity over and over again, which would add a lot of clutter to the graph.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- 
+  ggplot2::diamonds %>% 
+  group_by(cut, clarity) %>% 
+  summarize(price = mean(price),
+            table = mean(table),
+            depth = mean(depth)) %>% 
+  rename("Clarity"="clarity")
+
+fig <- df %>% 
+  ggplot(aes(x = cut, y = price, fill = Clarity)) + geom_col(position = "dodge") + labs(x = "Cut Quality", y = "Average Price (in USD)", title = "Diamond Prices by Cut Quality and Color Clarity")
+
+fig
+```
+
+Another common variant of a bar chart is the _stacked bar chart_. Like the grouped bar chart, it also requires multiple categorical variables and one continuous variable. Using the same data, we can use a stacked bar chart to examine how often each clarity of diamond is cut into each quality grade. In this case, we are simply counting the number of times each combination appears and using that as our continuous variable.
+
+```{r echo=FALSE}
+df <- ggplot2::diamonds %>% 
+  count(cut, clarity) %>% 
+  rename("Clarity" = "clarity")
+
+fig <- 
+  df %>% 
+  ggplot(aes(x = cut, y = n, fill = Clarity)) + geom_col(position = "stack") + labs(x = "Cut Quality", y = "Count", title = "Frequency of Diamond Color Clarity Within Cut Quality")
+
+fig
+```
+
+This type of chart emphasizes how many diamonds are in each cut quality, but the differing total sizes makes it more difficult to identify the proportions of clarity within each cut. We can change the emphasis with a "100% stacked bar chart", which makes it much easier to see the proportions within each group, but hides the total size of each group. Let's take a look:
+```{r echo=FALSE}
+df <- ggplot2::diamonds %>% 
+  count(cut, clarity) %>% 
+  rename("Clarity" = "clarity") %>% 
+  group_by(cut) %>% 
+  mutate(prop_n = n/sum(n))
+
+fig <- 
+  df %>% 
+  ggplot(aes(x = cut, y = prop_n, fill = Clarity)) + 
+  geom_col(position = "stack") + 
+  labs(x = "Cut Quality", y = "Proportion", title = "Proportions of Diamond Color Clarity Within Cut Quality") + 
+  scale_y_continuous(breaks = c(0,.25,.50,.75,1),
+                     labels = c("0%", "25%", "50%", "75%", "100%"))
+
+fig
+```
+
+
+### Marimekko Charts
+### Heatmaps
+### Radar Charts
+### Dot Plots
+### Gauge and Bullet Charts
+### Bubble Charts
+### Waterfall Charts
+
+
+
+
+## Time-Series Graphics 
+### Waterfall Charts (again)
+### Line Charts
+### Area Charts
+### Gantt Charts
+
+
+## Statistical/Distribution Insights
+### Histograms
+### Box Plots
+### Violin Charts
+### Rainclouds
+### Candlestick Charts
+### Stem-and-Leaf Plots
+
+### Principal Components
+### Scree Plots
+### Multivariate Plots
+Not sure this is a thing, but I want to look into it
+
+
+
+## Geographic and Spatial Data
+### Choropleth
+### Dot Density
+
+
+## Relationships Between Variables
+### Scatterplots
+### Correlation Matrix
+### Bubble Plots
+### Parallel Coordinates
+### Chord/Arc Diagram
+### Network Diagram
+### Tree Diagram
+
+
+## Flows and Nested Data
+### Pie Charts
+### Funnel/Pyramid Charts
+### Treemap
+### Sunburst
+
+## Famous Visualizations
+### Nightingale Plot
+### Napolean's March
+### John Snow's Cholera Outbreak

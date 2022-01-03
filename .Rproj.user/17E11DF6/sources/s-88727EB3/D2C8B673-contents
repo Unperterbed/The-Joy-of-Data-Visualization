@@ -1,0 +1,1 @@
+tippy::tippy("word.", tooltip = "Definition of word that pops up in a box upon hovering")

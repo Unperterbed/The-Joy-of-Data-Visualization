@@ -4,27 +4,27 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Anatomy of Data | The Joy of Data Visualization</title>
+  <title>Chapter 3 Anatomy of Data | The Joy of Data Visualization</title>
   <meta name="description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
   <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Anatomy of Data | The Joy of Data Visualization" />
+  <meta property="og:title" content="Chapter 3 Anatomy of Data | The Joy of Data Visualization" />
   <meta property="og:type" content="book" />
   <meta property="og:url" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/" />
-  
+  <meta property="og:image" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/images/JDV_book_cover.png" />
   <meta property="og:description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
   <meta name="github-repo" content="Unperterbed/The-Joy-of-Data-Visualization" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Anatomy of Data | The Joy of Data Visualization" />
+  <meta name="twitter:title" content="Chapter 3 Anatomy of Data | The Joy of Data Visualization" />
   
   <meta name="twitter:description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
-  
+  <meta name="twitter:image" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/images/JDV_book_cover.png" />
 
-<meta name="author" content="Kirby White" />
+<meta name="author" content="Kirby D. White" />
 
 
-<meta name="date" content="2021-12-09" />
+<meta name="date" content="2021-12-29" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="getting-started.html"/>
-
+<link rel="next" href="graphical-zoo.html"/>
 <script src="libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -53,6 +53,17 @@
 
 <link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<script src="libs/d3-4.13.0/d3.min.js"></script>
+<script src="libs/d3-tip-0.8.1/index.js"></script>
+<link href="libs/chorddiag-0.1.2.9000/chorddiag.css" rel="stylesheet" />
+<script src="libs/chorddiag-0.1.2.9000/chorddiag.js"></script>
 
 
 
@@ -73,30 +84,94 @@
 <li><a href="./">The Joy of Data Visualization</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> About</a></li>
-<li class="chapter" data-level="2" data-path="why-data-visualization.html"><a href="why-data-visualization.html"><i class="fa fa-check"></i><b>2</b> Why Data Visualization</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="why-data-visualization.html"><a href="why-data-visualization.html#history-of-data-visualization"><i class="fa fa-check"></i><b>2.1</b> History of Data Visualization</a></li>
-<li class="chapter" data-level="2.2" data-path="why-data-visualization.html"><a href="why-data-visualization.html#our-brains-want-it"><i class="fa fa-check"></i><b>2.2</b> Our Brains Want It</a></li>
-<li class="chapter" data-level="2.3" data-path="why-data-visualization.html"><a href="why-data-visualization.html#key-resources-and-inspiration"><i class="fa fa-check"></i><b>2.3</b> Key Resources and Inspiration</a></li>
+<li class="chapter" data-level="0.1" data-path="resources.html"><a href="resources.html#data-repositories"><i class="fa fa-check"></i><b>0.1</b> Data Repositories</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>3</b> Getting Started</a>
+<li class="chapter" data-level="1" data-path="why-data-visualization.html"><a href="why-data-visualization.html"><i class="fa fa-check"></i><b>1</b> Why Data Visualization</a>
 <ul>
-<li class="chapter" data-level="3.1" data-path="getting-started.html"><a href="getting-started.html#interactive-and-replicable"><i class="fa fa-check"></i><b>3.1</b> Interactive and Replicable</a></li>
-<li class="chapter" data-level="3.2" data-path="getting-started.html"><a href="getting-started.html#rstudio"><i class="fa fa-check"></i><b>3.2</b> RStudio</a></li>
-<li class="chapter" data-level="3.3" data-path="getting-started.html"><a href="getting-started.html#r-and-python"><i class="fa fa-check"></i><b>3.3</b> R and Python</a></li>
-<li class="chapter" data-level="3.4" data-path="getting-started.html"><a href="getting-started.html#python-in-rstudio"><i class="fa fa-check"></i><b>3.4</b> Python in RStudio</a></li>
-<li class="chapter" data-level="3.5" data-path="getting-started.html"><a href="getting-started.html#installing-packageslibraries"><i class="fa fa-check"></i><b>3.5</b> Installing Packages/Libraries</a></li>
+<li class="chapter" data-level="1.1" data-path="why-data-visualization.html"><a href="why-data-visualization.html#history-of-data-visualization"><i class="fa fa-check"></i><b>1.1</b> History of Data Visualization</a></li>
+<li class="chapter" data-level="1.2" data-path="why-data-visualization.html"><a href="why-data-visualization.html#our-brains-want-it"><i class="fa fa-check"></i><b>1.2</b> Our Brains Want It</a></li>
+<li class="chapter" data-level="1.3" data-path="why-data-visualization.html"><a href="why-data-visualization.html#key-resources-and-inspiration"><i class="fa fa-check"></i><b>1.3</b> Key Resources and Inspiration</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html"><i class="fa fa-check"></i><b>4</b> Anatomy of Data</a>
+<li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-is-data-what-is-information"><i class="fa fa-check"></i><b>4.1</b> What is data? What is information?</a></li>
-<li class="chapter" data-level="4.2" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#where-does-data-come-from"><i class="fa fa-check"></i><b>4.2</b> Where does data come from?</a></li>
-<li class="chapter" data-level="4.3" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-are-the-types-of-data"><i class="fa fa-check"></i><b>4.3</b> What are the types of data?</a></li>
-<li class="chapter" data-level="4.4" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#how-do-we-visualize-data"><i class="fa fa-check"></i><b>4.4</b> How do we visualize data?</a></li>
+<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#interactive-and-replicable"><i class="fa fa-check"></i><b>2.1</b> Interactive and Replicable</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#developer-environments-and-programming-languages"><i class="fa fa-check"></i><b>2.2</b> Developer Environments and Programming Languages</a></li>
+<li class="chapter" data-level="2.3" data-path="getting-started.html"><a href="getting-started.html#book-organization"><i class="fa fa-check"></i><b>2.3</b> Book Organization</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html"><i class="fa fa-check"></i><b>3</b> Anatomy of Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-is-data-what-is-information"><i class="fa fa-check"></i><b>3.1</b> What is data? What is information?</a></li>
+<li class="chapter" data-level="3.2" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#where-does-data-come-from"><i class="fa fa-check"></i><b>3.2</b> Where does data come from?</a></li>
+<li class="chapter" data-level="3.3" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-are-the-types-of-data"><i class="fa fa-check"></i><b>3.3</b> What are the types of data?</a></li>
+<li class="chapter" data-level="3.4" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#how-do-we-visualize-data"><i class="fa fa-check"></i><b>3.4</b> How do we visualize data?</a></li>
+<li class="chapter" data-level="3.5" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#how-does-the-computer-store-data"><i class="fa fa-check"></i><b>3.5</b> How does the computer store data?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphical-zoo.html"><a href="graphical-zoo.html"><i class="fa fa-check"></i><b>4</b> Graphical Zoo</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#comparing-multiple-categories"><i class="fa fa-check"></i><b>4.1</b> Comparing Multiple Categories</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#bar-charts"><i class="fa fa-check"></i><b>4.1.1</b> Bar Charts</a></li>
+<li class="chapter" data-level="4.1.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#marimekko-charts"><i class="fa fa-check"></i><b>4.1.2</b> Marimekko Charts</a></li>
+<li class="chapter" data-level="4.1.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#heatmaps"><i class="fa fa-check"></i><b>4.1.3</b> Heatmaps</a></li>
+<li class="chapter" data-level="4.1.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#radar-charts"><i class="fa fa-check"></i><b>4.1.4</b> Radar Charts</a></li>
+<li class="chapter" data-level="4.1.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#dot-plots"><i class="fa fa-check"></i><b>4.1.5</b> Dot Plots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#gauge-and-bullet-charts"><i class="fa fa-check"></i><b>4.1.6</b> Gauge and Bullet Charts</a></li>
+<li class="chapter" data-level="4.1.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#waterfall-charts"><i class="fa fa-check"></i><b>4.1.7</b> Waterfall Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#time-series-graphics"><i class="fa fa-check"></i><b>4.2</b> Time-Series Graphics</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#waterfall-charts-again"><i class="fa fa-check"></i><b>4.2.1</b> Waterfall Charts (again)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#line-charts"><i class="fa fa-check"></i><b>4.2.2</b> Line Charts</a></li>
+<li class="chapter" data-level="4.2.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#area-charts"><i class="fa fa-check"></i><b>4.2.3</b> Area Charts</a></li>
+<li class="chapter" data-level="4.2.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#gantt-charts"><i class="fa fa-check"></i><b>4.2.4</b> Gantt Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#statisticaldistribution-insights"><i class="fa fa-check"></i><b>4.3</b> Statistical/Distribution Insights</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#histograms"><i class="fa fa-check"></i><b>4.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="4.3.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#box-plots"><i class="fa fa-check"></i><b>4.3.2</b> Box Plots</a></li>
+<li class="chapter" data-level="4.3.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#violin-charts"><i class="fa fa-check"></i><b>4.3.3</b> Violin Charts</a></li>
+<li class="chapter" data-level="4.3.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#rainclouds"><i class="fa fa-check"></i><b>4.3.4</b> Rainclouds</a></li>
+<li class="chapter" data-level="4.3.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#candlestick-charts"><i class="fa fa-check"></i><b>4.3.5</b> Candlestick Charts</a></li>
+<li class="chapter" data-level="4.3.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#stem-and-leaf-plots"><i class="fa fa-check"></i><b>4.3.6</b> Stem-and-Leaf Plots</a></li>
+<li class="chapter" data-level="4.3.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#principal-components"><i class="fa fa-check"></i><b>4.3.7</b> Principal Components</a></li>
+<li class="chapter" data-level="4.3.8" data-path="graphical-zoo.html"><a href="graphical-zoo.html#scree-plots"><i class="fa fa-check"></i><b>4.3.8</b> Scree Plots</a></li>
+<li class="chapter" data-level="4.3.9" data-path="graphical-zoo.html"><a href="graphical-zoo.html#multivariate-plots"><i class="fa fa-check"></i><b>4.3.9</b> Multivariate Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#geographic-and-spatial-data"><i class="fa fa-check"></i><b>4.4</b> Geographic and Spatial Data</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#choropleth"><i class="fa fa-check"></i><b>4.4.1</b> Choropleth</a></li>
+<li class="chapter" data-level="4.4.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#dot-density"><i class="fa fa-check"></i><b>4.4.2</b> Dot Density</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#relationships-between-variables"><i class="fa fa-check"></i><b>4.5</b> Relationships Between Variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#scatterplots"><i class="fa fa-check"></i><b>4.5.1</b> Scatterplots</a></li>
+<li class="chapter" data-level="4.5.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#bubble-charts"><i class="fa fa-check"></i><b>4.5.2</b> Bubble Charts</a></li>
+<li class="chapter" data-level="4.5.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#correlation-matrix"><i class="fa fa-check"></i><b>4.5.3</b> Correlation Matrix</a></li>
+<li class="chapter" data-level="4.5.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#parallel-coordinates"><i class="fa fa-check"></i><b>4.5.4</b> Parallel Coordinates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#flows-and-nested-data"><i class="fa fa-check"></i><b>4.6</b> Flows and Nested Data</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#pie-charts"><i class="fa fa-check"></i><b>4.6.1</b> Pie Charts</a></li>
+<li class="chapter" data-level="4.6.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#funnelpyramid-charts"><i class="fa fa-check"></i><b>4.6.2</b> Funnel/Pyramid Charts</a></li>
+<li class="chapter" data-level="4.6.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#treemap"><i class="fa fa-check"></i><b>4.6.3</b> Treemap</a></li>
+<li class="chapter" data-level="4.6.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#chordarc-diagram"><i class="fa fa-check"></i><b>4.6.4</b> Chord/Arc Diagram</a></li>
+<li class="chapter" data-level="4.6.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#network-diagram"><i class="fa fa-check"></i><b>4.6.5</b> Network Diagram</a></li>
+<li class="chapter" data-level="4.6.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#tree-diagram"><i class="fa fa-check"></i><b>4.6.6</b> Tree Diagram</a></li>
+<li class="chapter" data-level="4.6.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#sunburst"><i class="fa fa-check"></i><b>4.6.7</b> Sunburst</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#famous-visualizations"><i class="fa fa-check"></i><b>4.7</b> Famous Visualizations</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#nightingale-plot"><i class="fa fa-check"></i><b>4.7.1</b> Nightingale Plot</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#napoleans-march"><i class="fa fa-check"></i><b>4.7.2</b> Napolean’s March</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#john-snows-cholera-outbreak"><i class="fa fa-check"></i><b>4.7.3</b> John Snow’s Cholera Outbreak</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#election-maps-trumps-vs-clintons"><i class="fa fa-check"></i><b>4.7.4</b> Election Maps (Trump’s vs Clinton’s)</a></li>
+</ul></li>
 </ul></li>
 <li class="divider"></li>
-<li><a href="www.kirbywhite.io" target="blank">Created by Kirby White</a></li>
+<li><a href="https:\\www.kirbywhite.io" target="blank">Created by Kirby White</a></li>
 
 </ul>
 
@@ -115,17 +190,17 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="anatomy-of-data" class="section level1" number="4">
-<h1><span class="header-section-number">Chapter 4</span> Anatomy of Data</h1>
-<div id="what-is-data-what-is-information" class="section level2" number="4.1">
-<h2><span class="header-section-number">4.1</span> What is data? What is information?</h2>
+<div id="anatomy-of-data" class="section level1" number="3">
+<h1><span class="header-section-number">Chapter 3</span> Anatomy of Data</h1>
+<div id="what-is-data-what-is-information" class="section level2" number="3.1">
+<h2><span class="header-section-number">3.1</span> What is data? What is information?</h2>
 </div>
-<div id="where-does-data-come-from" class="section level2" number="4.2">
-<h2><span class="header-section-number">4.2</span> Where does data come from?</h2>
+<div id="where-does-data-come-from" class="section level2" number="3.2">
+<h2><span class="header-section-number">3.2</span> Where does data come from?</h2>
 <p>All around you!</p>
 </div>
-<div id="what-are-the-types-of-data" class="section level2" number="4.3">
-<h2><span class="header-section-number">4.3</span> What are the types of data?</h2>
+<div id="what-are-the-types-of-data" class="section level2" number="3.3">
+<h2><span class="header-section-number">3.3</span> What are the types of data?</h2>
 <p>There are several frameworks to describe different types of data. The Stevens Typology (Stevens, 1946) is the most common among social scientists, so I’ll use its language throughout this book. Stevens describes four types of data:</p>
 <ul>
 <li>Ratio (salary in USD, height in inches, etc.)</li>
@@ -146,6 +221,7 @@
 <li>Job seniority (CEO &gt; vice president &gt; manager)</li>
 <li>Academic grades (A &gt; B &gt; C)</li>
 </ul>
+<p>Nominal and ordinal data can be called “categorical” data because they primarily depict different categories. Our next two, interval and ratio, are “continuous” types of data, because they contain values that be anywhere within a given range.</p>
 <p><em>Interval</em> data has a known magnitude and rank order. The Celsius temperature scale is a common example of this, with the range from 0 to 100 degrees providing an even gradient to express the amount of heat. We know that 35 is more than 28.5, and that the difference is 6.5 units. Other examples where interval data might be collected:</p>
 <ul>
 <li>Happiness scales</li>
@@ -157,13 +233,13 @@
 * # Products sold
 * miles per hour</p>
 <p>Most people struggle to spot the differences between ratio and interval data, and that’s okay. It rarely matters for visualizing data, but can be important for other types of data analytics, which is why it’s worth mentioning. There are also some data that can move between categories, such as time or geospatial data. We’ll cover these in more detail in the examples in a later chapter.</p>
-<p>The kinds of charts you can build depend on the type of data you want to visualizate. This table gives a (non-exhaustive) sampling of the plots that might work for each combination of two variables:</p>
+<p>The kinds of charts you can build depend on the type of data you want to visualize. This table gives a (non-exhaustive) sampling of the plots that might work for each combination of two variables:</p>
 <table>
 <thead>
 <tr class="header">
 <th>Variable 1</th>
 <th>Variable 2</th>
-<th>Graphs</th>
+<th>Possible Graphs</th>
 </tr>
 </thead>
 <tbody>
@@ -215,13 +291,81 @@
 <tr class="even">
 <td>Ratio</td>
 <td>Ratio</td>
-<td>Log-Transformed Scatterplot</td>
+<td>Area Chart</td>
 </tr>
 </tbody>
 </table>
+<p>Generally speaking, these four data types are fundamental for understanding the phenomena you wish to represent and the options available for visualizing them. There are, of course, exceptions and special cases that don’t fit neatly into this framework, which is why some academic fields may use a modified or completely different framework altogether. However, for most purposes, the Steven’s typology works well enough.</p>
+<p>However, there are some common visualizations that use data in a way that I think deserves their own categories, even though they can (strictly speaking) be placed into one of Steven’s four types. These are:</p>
+<ul>
+<li>Period</li>
+<li>Duration</li>
+<li>Flow</li>
+</ul>
+<p><em>Period</em> and <em>duration</em> data are both used to represent aspects of time. You can think of it as “a time period” (e.g., January 1, 2020 - June 30, 2020) and “a duration of time” (e.g., 4 hours 32 minutes and 18 seconds). Very often, period and duration data needs to be derived from a source of raw data, rather than being stored on its own. Consider a shipping company that is tracking the progress of several trucks in its fleet as they make deliveries. They can very easily log progress with a table like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Truck ID</th>
+<th>Status</th>
+<th>Time</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>123</td>
+<td>Departure</td>
+<td>2020-03-05 08:17:42</td>
+</tr>
+<tr class="even">
+<td>456</td>
+<td>Departure</td>
+<td>2020-03-05 08:22:06</td>
+</tr>
+<tr class="odd">
+<td>789</td>
+<td>Departure</td>
+<td>2020-03-05 08:23:58</td>
+</tr>
+<tr class="even">
+<td>456</td>
+<td>Arrival</td>
+<td>2020-03-05 09:14:33</td>
+</tr>
+<tr class="odd">
+<td>123</td>
+<td>Arrival</td>
+<td>2020-03-05 10:02:56</td>
+</tr>
+<tr class="even">
+<td>789</td>
+<td>Arrival</td>
+<td>2020-03-05 10:27:44</td>
+</tr>
+</tbody>
+</table>
+<p>By storing raw data as precise timestamps, they will always be able to aggregate their records into other useful information, such as:</p>
+<ul>
+<li>How long did it take 123 to arrive at its destination?</li>
+<li>What is the average trip length?</li>
+<li>How many trips took longer than 1 hour?</li>
+<li>and many more!</li>
+</ul>
+<p><em>Flow</em> data is simple to store but represents the complex movements of a “stock,” which is just an amount of something. This can be used to create “stock and flow” diagrams to portray the process of movement, or Sankey diagrams to portray the proportions of movement. Here is a simple example of a stock and flow chart:
+<img src="images/stock%20and%20flow%20intro.png" />
+Stock and Flow diagrams model the movement of a stock and the variables affecting it. These emphasize the mechanics and process of the flow, rather than the amounts currently flowing. Relatedly, a Sankey diagram emphasizes the quantities of flow during a given time period. This Sankey diagram shows the (completely fictional) “flow” of students through university. They apply as high-school or transfer students, select a major, and graduate or not:</p>
+<div class="figure"><span style="display:block;" id="fig:unnamed-chunk-2"></span>
+<div id="htmlwidget-3a9b08bf01f5900fb545" style="width:672px;height:480px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="htmlwidget-3a9b08bf01f5900fb545">{"x":{"visdat":{"5e907b7e5271":["function () ","plotlyVisDat"]},"cur_data":"5e907b7e5271","attrs":{"5e907b7e5271":{"orientation":"h","node":{"label":["High School","Transfer","Business","Psychology","Biology","Graduated","Not Graduated"],"color":["blue","blue","purple","orange","grey","green","black"],"pad":15,"thickness":20,"line":{"color":"black","width":0.5}},"link":{"source":[0,0,0,1,1,1,2,2,3,3,4,4],"target":[2,3,4,2,3,4,5,6,5,6,5,6],"value":[400,350,200,150,125,100,525,25,460,15,225,75]},"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"sankey"}},"layout":{"margin":{"b":40,"l":60,"t":25,"r":10},"title":"<b>University Students<\/b> by application status, major choice, and graduation status","font":{"size":10},"hovermode":"closest","showlegend":false},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"data":[{"orientation":"h","node":{"label":["High School","Transfer","Business","Psychology","Biology","Graduated","Not Graduated"],"color":["blue","blue","purple","orange","grey","green","black"],"pad":15,"thickness":20,"line":{"color":"black","width":0.5}},"link":{"source":[0,0,0,1,1,1,2,2,3,3,4,4],"target":[2,3,4,2,3,4,5,6,5,6,5,6],"value":[400,350,200,150,125,100,525,25,460,15,225,75]},"type":"sankey","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<p class="caption">
+Figure 3.1: Sankey diagrams depict the sources and flow of a stock, as well as the proportions of their values.
+</p>
 </div>
-<div id="how-do-we-visualize-data" class="section level2" number="4.4">
-<h2><span class="header-section-number">4.4</span> How do we visualize data?</h2>
+<p>You are probably already familiar with a “flow chart.” These charts are visual depictions of a decision making process, and are rarely (in my experience, anyways) connected to a raw data source. Nonetheless, they are an excellent way to communicate natural phenomena or other processes. These will be covered in chapter [###].</p>
+<p>We’ll cover the code to create Sankey diagrams later on.</p>
+</div>
+<div id="how-do-we-visualize-data" class="section level2" number="3.4">
+<h2><span class="header-section-number">3.4</span> How do we visualize data?</h2>
 <p>We create a graph of data by <em>encoding</em> the values into various visual properties, such as:</p>
 <ul>
 <li>Color</li>
@@ -229,16 +373,36 @@
 <li>Area</li>
 <li>Text</li>
 <li>Angle</li>
-<li>Position
-And more!</li>
+<li>Position</li>
+<li>And more!</li>
 </ul>
-<p>Data visualization is the final step in a process of encoding natural phenomena into data and then translating data into visual properties.</p>
+<p>Data visualization is the final step in a process of encoding natural phenomena into data and then translating data into visual properties. It seems simple, but these visual properties are the fundamentals of all data visualization. Check out this little simulation to see how these properties change with your data:</p>
+<iframe src="https://alt-f11.shinyapps.io/EncodingExamples/?showcase=0" width="672" height="600px" data-external="1">
+</iframe>
 <p>Information is always lost in translation, and data visualization is no exception. Sometimes, we fail to capture important information about the phenomena into the data we store. For instance, you may have taken an employee experience survey that asked you to “rate your job satisfaction on a scale from 1 to 10 (highest).” The data we capture is incredibly simple (an integer between 1 and 10), but your holistic experience on the job is rich and nuanced and detailed and diverse! A great deal of information about the phenomena we’re interested in is <em>not</em> captured with this question. That doesn’t mean it’s a bad question, only that there’s a gap between the reality of the phenomena and the data we’ve captured. We could ask the same question, but instead of requiring a numeric response, allow the employee to write a text response. This would certainly capture more information about their true experience, but this type of data is much more complex to work with and derive insights from. In this way, the data we capture is the first (and usually biggest) limitation on our ability to understand the world around us.</p>
 <p>Other times, our visualizations fail to capture meaningful aspects of our data (and thus, the phenomena itself). After surveying 100 employees, we might use a bar plot to show that the average job satisfaction score is 9.2 out of 10. Yahoo! But the average score of all 100 employees is only one piece of information, and we might have several other questions: What was the lowest and highest scores? Did the scores vary by work team? Have scores gone up or down over time? How do these scores compare to other similar companies? And so on.</p>
 <p>Generally speaking, more information is lost during the translation from reality to data than from data to visualization. Gathering data which faithfully and fully represents natural phenomena is difficult, tedious, and complex. Scientists spend years learning about a particular category of phenomena (medicine, biology, psychology, etc.) and being trained in the methods to capture meaningful data related to their discipline. This book mostly deals with the second phase of translation: data to visualization. It contains numerous examples of visualization techniques, describes the terminology and proper usage of various charts and graphs, and provides the statistical code to reproduce the examples in the R programming language.</p>
-<p>This app demonstrates a few interactive ways to see how data is encoded into various properties.</p>
-<iframe src="https://alt-f11.shinyapps.io/EncodingExamples/?showcase=0" width="672" height="600px" data-external="1">
-</iframe>
+</div>
+<div id="how-does-the-computer-store-data" class="section level2" number="3.5">
+<h2><span class="header-section-number">3.5</span> How does the computer store data?</h2>
+<p>Unfortunately, it’s unlikely that you’ll actually encounter something labeled as “ratio” or “ordinal” data. Those terms help you think about what kind of phenomena is represented by the data, not how the data is being stored in the computer. When you have a dataset in R, you can see how the computer is storing each column using the <code>str(name_of_object)</code> command. Here are the most common storage types and their (likely) counterpart in the Steven’s typology:</p>
+<p><strong>Ratio and Interval</strong></p>
+<ul>
+<li><code>num</code> (numeric)</li>
+<li><code>int</code> (integer)</li>
+<li><code>dbl</code> (double-point floating precision number)</li>
+</ul>
+<p><strong>Ordinal</strong></p>
+<ul>
+<li><code>Ord. Factor</code> (Ordered Factor)</li>
+<li><code>int</code> (Integer)</li>
+<li><code>chr</code> (character string)</li>
+<li><code>logical</code> (true or false)</li>
+</ul>
+<p><strong>Nominal</strong>
+* <code>Factor</code> (Factor)
+* <code>chr</code> (character string)
+* <code>logical</code> (true or false)</p>
 
 </div>
 </div>
@@ -247,8 +411,8 @@ And more!</li>
           </div>
         </div>
       </div>
-<a href="getting-started.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="getting-started.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="graphical-zoo.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -271,12 +435,12 @@ gitbook.start({
 "instapaper": false,
 "vk": false,
 "whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin"]
 },
 "fontsettings": {
 "theme": "white",
-"family": "sans",
-"size": 2
+"family": "sans serif",
+"size": 3
 },
 "edit": {
 "link": "https://github.com/Unperterbed/The-Joy-of-Data-Visualization/edit/main/03-Theory-Of-Visualization.Rmd",
@@ -290,32 +454,22 @@ gitbook.start({
 "link": null,
 "text": null
 },
-"download": ["_main.pdf", "_main.epub"],
+"download": null,
 "search": {
 "engine": "fuse",
 "options": null
 },
 "toc": {
-"collapse": "subsection"
-}
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"fig_caption": true,
+"number_sections": true,
+"split_by": "section"
 });
 });
 </script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    var src = "true";
-    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
-    if (location.protocol !== "file:")
-      if (/^https?:/.test(src))
-        src = src.replace(/^https?:/, '');
-    script.src = src;
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
 </body>
 
 </html>

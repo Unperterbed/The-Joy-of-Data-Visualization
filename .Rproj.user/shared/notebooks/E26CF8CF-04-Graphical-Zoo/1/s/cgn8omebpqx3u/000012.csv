@@ -1,0 +1,15 @@
+"0","datasets::attitude %>% 
+  ggplot(aes(x = learning, y = advance)) + 
+  geom_smooth(method = ""lm"", se = FALSE, color = ""grey"", linetype = ""solid"", size = 2) +
+  geom_point(size = 2) +
+  scale_y_continuous(breaks = c(20,40,60,80),
+                     labels = c(""20%"", ""40%"", ""60%"", ""80%""),
+                     limits = c(20,80))+
+  scale_x_continuous(breaks = c(20,40,60,80),
+                     labels = c(""20%"", ""40%"", ""60%"", ""80%""),
+                     limits = c(20,80))+
+  theme(aspect.ratio = 1) +
+  labs(x = ""Opportunity to Learn"", y = ""Opportunity to Advance"")
+"
+"2","`geom_smooth()` using formula 'y ~ x'
+"

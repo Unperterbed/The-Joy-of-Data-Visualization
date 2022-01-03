@@ -1,0 +1,7 @@
+"0","datasets::iris %>% 
+  ggplot(aes(y = Sepal.Length, x = Petal.Length)) + 
+  geom_smooth(method = ""lm"", se = FALSE) +
+  geom_point()
+"
+"2","`geom_smooth()` using formula 'y ~ x'
+"

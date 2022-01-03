@@ -1,0 +1,15 @@
+---
+title: "Untitled"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+ Type | R | Python 
+-|-|-
+Ratio and Interval| `num` (numeric) \n  `dbl` (double precision float) \n `int` (integer) | 
+Ordinal | `Ord. Factor` (ordered factor) \n `logical` (True or False) \n `chr` (character string) |
+Nominal | `Factor` (groups) \n `logical` (True or False) \n `chr` (character string) |
+

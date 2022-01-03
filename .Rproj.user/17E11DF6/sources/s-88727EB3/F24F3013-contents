@@ -1,0 +1,407 @@
+# Graphical Zoo   
+```{r include=FALSE}
+
+library(tidyverse)
+theme_set(theme_minimal())
+theme_update(panel.grid = element_blank())
+```
+
+This chapter serves as a menagerie of different types of visualization. My intention is to quickly let you see a variety of chart types, point out their encoding mechanisms, and help you become more familiar with the role of data types and why they are so fundamental to visualization (even though it seems very boring).
+
+The graphics are arranged into categories based on their primary purpose or features, and not necessarily their similarity. For instance, histograms and bar charts can look nearly identical but have radically different purposes. Each category serves as the basis for the majority of the chapters in this book, which is where you can find additional examples, reproducible code snippets, common misinterpretations or ways to abuse a chart, and possibly the history of each chart or anecdotes about their famous (or infamous) uses!
+
+## Comparing Multiple Categories
+### Bar Charts
+Bar charts are one of the most fundamental graphs. They always have at least one categorical (i.e., either nominal or ordinal) and one continuous (i.e., interval or ratio) variable. The categorical variable is encoded in the position of each bar. It can help your audience understand the chart better if you put some thought into the order of the bars. If your categorical variable is ordinal (e.g., small, medium, large) then it probably makes sense to ensure that the bars are also in that order. If your variable is nominal, the order may not matter at all, or you'll want to order them by the value of their corresponding continuous value, perhaps in ascending or descending order.
+
+This example comes from a dataset of jewelry sales, specifically diamonds. Each diamond is graded based on the quality of its cut (ordinally, from fair to ideal) and has a sale price. When we calculate the average price for each quality grade, we can visualize it with this bar chart:
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- 
+  ggplot2::diamonds %>% 
+  group_by(cut) %>% 
+  summarize(price = mean(price),
+            table = mean(table),
+            depth = mean(depth))
+
+fig <- df %>% 
+  ggplot(aes(x = cut,
+             y = price)) + geom_col() + labs(x = "Cut Quality", y = "Average Price (in USD)", title = "Diamond Prices by Cut Quality")
+
+fig
+```
+
+Bar charts can contain more than the two required variables. For instance, this bar chart displays the price of diamonds by cut quality (ordinal) _and_ color clarity (ordinal), and is technically called a grouped bar chart. We make a separate bar for each combination of cut and clarity. The bars are grouped together based on their cut, and put in order of their clarity. The groups are also in order of cut quality. Notice that clarity is encoded two ways: with bar position _and_ with color. The addition of color means that we can avoid printing the label for each clarity over and over again, which would add a lot of clutter to the graph.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- 
+  ggplot2::diamonds %>% 
+  group_by(cut, clarity) %>% 
+  summarize(price = mean(price),
+            table = mean(table),
+            depth = mean(depth)) %>% 
+  rename("Clarity"="clarity")
+
+fig <- df %>% 
+  ggplot(aes(x = cut, y = price, fill = Clarity)) + geom_col(position = "dodge") + labs(x = "Cut Quality", y = "Average Price (in USD)", title = "Diamond Prices by Cut Quality and Color Clarity")
+
+fig
+```
+
+Another common variant of a bar chart is the _stacked bar chart_. Like the grouped bar chart, it also requires multiple categorical variables and one continuous variable. Using the same data, we can use a stacked bar chart to examine how often each clarity of diamond is cut into each quality grade. In this case, we are simply counting the number of times each combination appears and using that as our continuous variable.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- ggplot2::diamonds %>% 
+  count(cut, clarity) %>% 
+  rename("Clarity" = "clarity")
+
+fig <- 
+  df %>% 
+  ggplot(aes(x = cut, y = n, fill = Clarity)) + geom_col(position = "stack") + labs(x = "Cut Quality", y = "Count", title = "Frequency of Diamond Color Clarity Within Cut Quality")
+
+fig
+```
+
+This type of chart emphasizes how many diamonds are in each cut quality, but the differing total sizes makes it more difficult to identify the proportions of clarity within each cut. We can change the emphasis with a "100% stacked bar chart", which makes it much easier to see the proportions within each group, but hides the total size of each group. Let's take a look:
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- ggplot2::diamonds %>% 
+  count(cut, clarity) %>% 
+  rename("Clarity" = "clarity") %>% 
+  group_by(cut) %>% 
+  mutate(prop_n = n/sum(n))
+
+fig <- 
+  df %>% 
+  ggplot(aes(x = cut, y = prop_n, fill = Clarity)) + 
+  geom_col(position = "stack") + 
+  labs(x = "Cut Quality", y = "Proportion", title = "Proportions of Diamond Color Clarity Within Cut Quality") + 
+  scale_y_continuous(breaks = c(0,.25,.50,.75,1),
+                     labels = c("0%", "25%", "50%", "75%", "100%"))
+
+fig
+```
+
+
+### Marimekko Charts
+Marimekko charts are similar to bar charts, but require two continuous variables instead of just one, and still require (at least) one categorical variable. At its simplest, a Marimekko chart is a bar chart that also encodes one continuous variable into the width of each bar, rather than keeping them consistent widths. Take a look at this example to see how we can use two continuous variables in a bar chart:
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- as.data.frame(datasets::state.x77)
+
+fig <- df %>% 
+  arrange(Population) %>% 
+  head(5) %>% 
+  rownames_to_column(var = "State") %>% 
+  ggplot(aes(x = State, y = Population, width = Area/400000)) + 
+  geom_bar(position = "dodge", stat = "identity") +
+  scale_x_discrete(limits = c("Nevada", "Delaware", "Vermont","Wyoming", "Alaska")) +
+  labs(
+    x = "State",
+    y = "Population (hundreds-of-thousands)",
+    title = "Population, Land Area, and Median Income of the Five Least-Populated US States"
+  )
+
+fig
+```
+
+
+This makes it easy for your viewers to infer a third variable (population density) from the display. For instance, it becomes immediately obvious that Delaware is the most densely populated state while Alaksa is the least.
+
+Just for fun, let's also encode a third continuous variable into this graph. We'll encode the median per-capita-income into the color of each bar:
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- as.data.frame(datasets::state.x77)
+
+fig <- df %>% 
+  arrange(Population) %>% 
+  head(5) %>% 
+  rownames_to_column(var = "State") %>% 
+  ggplot(aes(x = State, y = Population, fill = Income, width = Area/400000)) + 
+  geom_bar(position = "dodge", stat = "identity") +
+  scale_x_discrete(limits = c("Nevada", "Delaware", "Vermont","Wyoming", "Alaska")) +
+  labs(
+    x = "State",
+    y = "Population (hundreds-of-thousands)",
+    title = "Population, Land Area, and Median Income of the Five Least-Populated US States"
+  )
+
+fig
+```
+
+While it's relatively easy to create a graphic like this, it may not be wise. It is probably too much information for a viewer to readily receive and interpret, thus slowing down their ability to identify important insights or generating new questions.
+
+
+
+### Heatmaps
+Heatmaps are usually used to quickly identify "high" and "low" values by using "hotter" and "cooler" colors. They require at least one categorical and one continuous variable, but very often use two categorical variables. Sometimes the frequency count of each combination of categorical variables acts as the continuous variable, like this example showing how frequently diamonds of a given clarity are cut to a given quality:
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- ggplot2::diamonds
+
+fig <- df %>% 
+  select(cut, clarity) %>% 
+  ggplot(aes(x = cut, y = clarity)) + 
+  geom_bin2d()+
+  labs(x = "Cut Quality",
+       y = "Color Clarity",
+       title = "Frequency of Diamond Cut and Color") +
+  scale_fill_continuous(type = "viridis")
+
+fig
+```
+
+Here, the frequency count of each combination is encoded into the color of each square. The large contrast in colors make it immediately clear that the most frequently occurring combination is "Ideal" and "VS2" diamonds.
+
+### Radar Charts
+Radar charts are a great way to plot several categorical variables, potentially across several groups, each with a corresponding continuous value. Imagine we have a table of a student's grades in several classes:
+
+Student ID | Class | Grade %
+-|-|
+123 | Business | 87
+123 | Psychology | 92
+123 | English   | 84
+123 | Math | 89
+123 | Science | 81
+
+We could encode each class in a different location around a circular axis, and then encode each grade with a dot somewhere along the length of the axis. When we connect the dots and fill in the area, it looks like this:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+
+#https://www.r-graph-gallery.com/142-basic-radar-chart.html
+
+df <- data.frame(
+  `Student_ID` = '123',
+  Business = c(100,0,72),
+  Psychology = c(100,0,90),
+  English = c(100,0,74),
+  Math = c(100,0,62),
+  Science = c(100,0,87)
+)
+
+df %>% 
+  select(2:6) %>%
+  fmsb::radarchart(
+    axistype = 1,
+    seg = 5,
+    pcol='#4724c7', 
+    pfcol=rgb(.745, .745, .745,.4),
+    plwd=4,
+    cglcol="grey", 
+    cglty=1,
+    axislabcol="grey",
+    caxislabels=seq(0,100,20),
+    cglwd=0.8
+  )
+```
+
+These charts have a variety of other names such as polar charts, web charts, spider charts.
+
+### Dot Plots
+Dot plots are simple to understand and very flexible with the types of data they accept. At its simplest, they require one continuous variable and one categorical variable with at least two levels (i.e., options).
+
+Let's plot the median incomes (in 1975) for two states in the USA:
+```{r echo=FALSE, message=FALSE, warning=FALSE, fig.height=1.5, fig.width=7}
+df <- as.data.frame(datasets::state.x77)
+df2 <- as.data.frame(datasets::state.x77)
+
+df <- 
+  df %>% 
+  rownames_to_column(var = "State") %>% 
+  filter(State %in% c("Tennessee", "Delaware"))
+
+
+df %>% 
+  ggplot(aes(x = Income, y = "")) + 
+  geom_segment(aes(x = min(df2$Income), xend = max(df2$Income), y = "", yend = ""), color = '#999999', linetype = "dashed") +
+  geom_point(inherit.aes = FALSE, aes(x = c(min(df2$Income), xend = max(df2$Income)), y = ""), color = '#999999')+
+  geom_segment(aes(x = df[2,3], 
+                   xend = df[1,3],
+                   y = "", yend = ""),
+               size = 2,
+               show.legend = FALSE)+
+  geom_point(aes(color = State), size = 5, show.legend = FALSE) + 
+  xlim(c(0,7000)) + 
+  labs(x = "1975 Median Income (in USD)", y = "") + 
+  geom_text(aes(label = State), nudge_y = .2) +
+  geom_text(inherit.aes = FALSE,
+            aes(x = c(min(df2$Income), xend = max(df2$Income)),
+                y = "",
+                label = c("Min", "Max")),
+            nudge_y = -.1,
+            color = '#6e6e6e')
+```
+
+### Gauge and Bullet Charts
+### Waterfall Charts
+
+
+
+
+## Time-Series Graphics 
+### Waterfall Charts (again)
+### Line Charts
+### Area Charts
+### Gantt Charts
+
+
+## Statistical/Distribution Insights
+### Histograms
+### Box Plots
+### Violin Charts
+### Rainclouds
+### Candlestick Charts
+### Stem-and-Leaf Plots
+
+### Principal Components
+### Scree Plots
+### Multivariate Plots
+Not sure this is a thing, but I want to look into it
+
+
+
+## Geographic and Spatial Data
+### Choropleth
+### Dot Density
+
+
+## Relationships Between Variables
+### Scatterplots
+Scatterplots are another fundamental type of chart to understand. At their simplest, they display the information of two continuous variables. Critically, the values of each variable are displayed as pairs, meaning that each set of values should belong to the same <span class="tooltip"><u>unit</u><span class="tooltiptext">A "unit" can be anything: a person, a business, a location, etc. Each pair of continuous values must belong to the same unit</span></span>.
+
+Here's a simple scatterplot of employee attitudes about their work department. Each dot represents a different department (the unit), and the values of each variable are encoded in the position of the dot. The value of each variable is the average number of favorable responses employees within each department gave when asked a particular question, such as, "How do you feel about your opportunities to advance within this department? That variable is encoded in the vertical position of each dot. That is, dots with a *higher* position indicate *more favorable* responses than dots with a lower position. The other variable is encoded in the horizontal position of each dot, with higher values being indicated by a position farther to the right.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+datasets::attitude %>% 
+  ggplot(aes(x = learning, y = advance)) + 
+  geom_point(size = 2) +
+  scale_y_continuous(breaks = c(20,40,60,80),
+                     labels = c("20%", "40%", "60%", "80%"),
+                     limits = c(20,80))+
+  scale_x_continuous(breaks = c(20,40,60,80),
+                     labels = c("20%", "40%", "60%", "80%"),
+                     limits = c(20,80))+
+  theme(aspect.ratio = 1) +
+  labs(x = "Opportunity to Learn", y = "Opportunity to Advance")
+```
+
+This is the first "relational" plot because it is primarily intended to examine for the presence of a relationship between the two chosen variables. In this example, someone could argue that employees who are able to learn more skills are more valuable to their employer and are thus more likely to receive a promotion. If you agree with that logic, then you'd expect to see a relationship between these variables, such that departments that are high in one variable are probably high in the other.
+
+In fact, this relationship can be emphasized by adding a "line of best fit" through the dots, like this:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+datasets::attitude %>% 
+  ggplot(aes(x = learning, y = advance)) + 
+  geom_smooth(method = "lm", se = FALSE, color = "grey", linetype = "solid", size = 2) +
+  geom_point(size = 2) +
+  scale_y_continuous(breaks = c(20,40,60,80),
+                     labels = c("20%", "40%", "60%", "80%"),
+                     limits = c(20,80))+
+  scale_x_continuous(breaks = c(20,40,60,80),
+                     labels = c("20%", "40%", "60%", "80%"),
+                     limits = c(20,80))+
+  theme(aspect.ratio = 1) +
+  labs(x = "Opportunity to Learn", y = "Opportunity to Advance")
+```
+
+This line has been drawn in such a way that it is as close as possible to every dot in the display. It trends upwards and to the right, indicating that as one variable increases you should also expect the other to increase. There are a <span class="tooltip"><u>significant</u><span class="tooltiptext">get it?</span></span> number of statistical methods to identify whether the portrayed relationship is truly their or is simply <span class="tooltip"><u>spurious</u><span class="tooltiptext">meaning that it's random or without merit</span></span>.
+
+Scatterplots can easily accomodate the addition of a categorical variable to investigate relationships across groups. Take a look at this graph showing the relationship between petal length and sepal length of irises, a type of flower:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+datasets::iris %>% 
+  ggplot(aes(y = Sepal.Length, x = Petal.Length)) + 
+  geom_smooth(method = "lm", se = FALSE, color = "black") +
+  geom_point()
+```
+
+This makes it clear that there's a relationship between the two features, but let's see what happens when we encode the sub-species of each plant into the dot's colors:
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+datasets::iris %>% 
+  ggplot(aes(y = Sepal.Length, x = Petal.Length, color = Species)) + 
+  geom_smooth(method = "lm", se = FALSE) +
+  geom_point()
+```
+
+By the way, if you're like me and don't remember anything from your biology classes, here's what petals and sepals are:
+
+![](http://classic.plantid.net/Glossary/Sepal_files/image001.png)
+
+
+### Bubble Charts
+Bubble charts are a variant of the scatterplot that incorporate a third continuous variable, which is encoded into the size of each dot. Here's a bubble chart primarily showing the illiteracy and high school graduation rates in each state in the USA. The median income is encoded into the size of each dot, such that states with higher incomes are shown with larger dots:
+
+```{r echo=FALSE, message=FALSE, error=FALSE}
+datasets::state.x77 %>% 
+  as.data.frame() %>% 
+  ggplot(aes(x = Illiteracy, y = `HS Grad`, size = Income)) + 
+  geom_point(color = "black", alpha = .3) +
+  scale_x_continuous(breaks = c(0,1,2,3),
+                     labels = c('0%','1%','2%','3%'),
+                     limits = c(0,3)) +
+  scale_y_continuous(breaks = c(0, 20,40,60, 80, 100),
+                     labels = c('0%', '20%','40%','60%','80%', '100%'),
+                     limits = c(0,100)) +
+  labs(x = "Illiteracy Rate",
+       y = "High School Graduation Rate")
+
+```
+
+When using multiple encodings to display multiple variables, it becomes critically important to consider which variables to encode with each visual property. Why did I choose to make the area of each dot proportional to income, and not the illiteracy rates? Why did I choose to use area rather than a color gradient? These questions are primarily answered by the information contained in <mark>{chapter on encoding precision}</mark>.
+
+### Correlation Matrix
+### Parallel Coordinates
+
+
+## Flows and Nested Data
+### Pie Charts
+### Funnel/Pyramid Charts
+### Treemap
+### Chord/Arc Diagram
+Chord and Arc diagrams are one type of network diagram, which will be further explored soon. These diagrams really require only two categorical variables, but they must be paired together so that one variable is the _source_ and to the other's _target_ or destination. For instance, if you were to map your movements in the day, it might look something like this:
+
+Source | Target
+-|-
+Home | School
+School | Home
+Home | Gym
+Gym | Home
+Home | Restaurant
+Restaurant | Movie
+Movie | Home
+
+Notice that these might be in a chronological order, but that the ordering of stops isn't displayed in this chord diagram of your movements:
+
+```{r echo=FALSE, message=FALSE, error=FALSE}
+# https://www.r-graph-gallery.com/chord-diagram.html
+# https://www.r-graph-gallery.com/chord-diagram-interactive.html
+
+library(chorddiag)
+
+m <- matrix(c(
+#from...home school gym restaurant movie
+        0, 1, 1, 0, 1, #to home
+        1, 0, 0, 0, 0, #to school
+        1, 1, 0, 0, 0, #to gym
+        1, 0, 0, 0, 0,#to restaurant
+        0, 0, 0, 1, 0#to movie
+),
+byrow = TRUE,
+nrow = 5, ncol = 5)
+
+locations <- c("Home", "School", "Gym", "Restaurant", "Movie")
+dimnames(m) <- list(source = locations,
+                    target = locations)
+
+# Build the chord diagram:
+chorddiag(m, groupnamePadding = 20, groupPadding = 4, showTicks = FALSE)
+```
+
+This can be confusing to interpret at first, but it's a clever way of showing the movements. Each location (a source or target) is given a bar around the edge of a circle. Then, chords are drawn between locations that were connected by your movements at some point. The width of the chord is proportional to the number of connections between the two locations. If the two ends of a chord are equal widths, this tells you that those locations were the source and target an equal number of times. If a chord is wider at one end than the other, then the location at the wider end was the source more often than the target.
+
+
+### Network Diagram
+### Tree Diagram
+### Sunburst
+
+## Famous Visualizations
+### Nightingale Plot
+### Napolean's March
+### John Snow's Cholera Outbreak
+### Election Maps (Trump's vs Clinton's)

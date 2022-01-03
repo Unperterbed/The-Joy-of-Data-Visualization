@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Graphical Zoo | The Joy of Data Visualization</title>
+  <meta name="description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
+  <meta name="generator" content="bookdown 0.24 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Graphical Zoo | The Joy of Data Visualization" />
+  <meta property="og:type" content="book" />
+  <meta property="og:url" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/" />
+  <meta property="og:image" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/images/JDV_book_cover.png" />
+  <meta property="og:description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
+  <meta name="github-repo" content="Unperterbed/The-Joy-of-Data-Visualization" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Graphical Zoo | The Joy of Data Visualization" />
+  
+  <meta name="twitter:description" content="This book is designed to inspire others to see and communicate more of their data through reproducible examples." />
+  <meta name="twitter:image" content="https://unperterbed.github.io/The-Joy-of-Data-Visualization/images/JDV_book_cover.png" />
+
+<meta name="author" content="Kirby D. White" />
+
+
+<meta name="date" content="2021-12-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="anatomy-of-data.html"/>
+
+<script src="libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.0.1/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0.1/anchor-sections.js"></script>
+<script src="libs/htmlwidgets-1.5.4/htmlwidgets.js"></script>
+<script src="libs/plotly-binding-4.10.0/plotly.js"></script>
+<script src="libs/typedarray-0.1/typedarray.min.js"></script>
+<link href="libs/crosstalk-1.2.0/css/crosstalk.min.css" rel="stylesheet" />
+<script src="libs/crosstalk-1.2.0/js/crosstalk.min.js"></script>
+<link href="libs/plotly-htmlwidgets-css-2.5.1/plotly-htmlwidgets.css" rel="stylesheet" />
+<script src="libs/plotly-main-2.5.1/plotly-latest.min.js"></script>
+<script src="libs/d3-4.13.0/d3.min.js"></script>
+<script src="libs/d3-tip-0.8.1/index.js"></script>
+<link href="libs/chorddiag-0.1.2.9000/chorddiag.css" rel="stylesheet" />
+<script src="libs/chorddiag-0.1.2.9000/chorddiag.js"></script>
+
+
+
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">The Joy of Data Visualization</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>About</a></li>
+<li class="chapter" data-level="" data-path="resources.html"><a href="resources.html"><i class="fa fa-check"></i>Resources</a>
+<ul>
+<li class="chapter" data-level="0.1" data-path="resources.html"><a href="resources.html#data-repositories"><i class="fa fa-check"></i><b>0.1</b> Data Repositories</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="why-data-visualization.html"><a href="why-data-visualization.html"><i class="fa fa-check"></i><b>1</b> Why Data Visualization</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="why-data-visualization.html"><a href="why-data-visualization.html#history-of-data-visualization"><i class="fa fa-check"></i><b>1.1</b> History of Data Visualization</a></li>
+<li class="chapter" data-level="1.2" data-path="why-data-visualization.html"><a href="why-data-visualization.html#our-brains-want-it"><i class="fa fa-check"></i><b>1.2</b> Our Brains Want It</a></li>
+<li class="chapter" data-level="1.3" data-path="why-data-visualization.html"><a href="why-data-visualization.html#key-resources-and-inspiration"><i class="fa fa-check"></i><b>1.3</b> Key Resources and Inspiration</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="getting-started.html"><a href="getting-started.html"><i class="fa fa-check"></i><b>2</b> Getting Started</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="getting-started.html"><a href="getting-started.html#interactive-and-replicable"><i class="fa fa-check"></i><b>2.1</b> Interactive and Replicable</a></li>
+<li class="chapter" data-level="2.2" data-path="getting-started.html"><a href="getting-started.html#developer-environments-and-programming-languages"><i class="fa fa-check"></i><b>2.2</b> Developer Environments and Programming Languages</a></li>
+<li class="chapter" data-level="2.3" data-path="getting-started.html"><a href="getting-started.html#book-organization"><i class="fa fa-check"></i><b>2.3</b> Book Organization</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html"><i class="fa fa-check"></i><b>3</b> Anatomy of Data</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-is-data-what-is-information"><i class="fa fa-check"></i><b>3.1</b> What is data? What is information?</a></li>
+<li class="chapter" data-level="3.2" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#where-does-data-come-from"><i class="fa fa-check"></i><b>3.2</b> Where does data come from?</a></li>
+<li class="chapter" data-level="3.3" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#what-are-the-types-of-data"><i class="fa fa-check"></i><b>3.3</b> What are the types of data?</a></li>
+<li class="chapter" data-level="3.4" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#how-do-we-visualize-data"><i class="fa fa-check"></i><b>3.4</b> How do we visualize data?</a></li>
+<li class="chapter" data-level="3.5" data-path="anatomy-of-data.html"><a href="anatomy-of-data.html#how-does-the-computer-store-data"><i class="fa fa-check"></i><b>3.5</b> How does the computer store data?</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="graphical-zoo.html"><a href="graphical-zoo.html"><i class="fa fa-check"></i><b>4</b> Graphical Zoo</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#comparing-multiple-categories"><i class="fa fa-check"></i><b>4.1</b> Comparing Multiple Categories</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#bar-charts"><i class="fa fa-check"></i><b>4.1.1</b> Bar Charts</a></li>
+<li class="chapter" data-level="4.1.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#marimekko-charts"><i class="fa fa-check"></i><b>4.1.2</b> Marimekko Charts</a></li>
+<li class="chapter" data-level="4.1.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#heatmaps"><i class="fa fa-check"></i><b>4.1.3</b> Heatmaps</a></li>
+<li class="chapter" data-level="4.1.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#radar-charts"><i class="fa fa-check"></i><b>4.1.4</b> Radar Charts</a></li>
+<li class="chapter" data-level="4.1.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#dot-plots"><i class="fa fa-check"></i><b>4.1.5</b> Dot Plots</a></li>
+<li class="chapter" data-level="4.1.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#gauge-and-bullet-charts"><i class="fa fa-check"></i><b>4.1.6</b> Gauge and Bullet Charts</a></li>
+<li class="chapter" data-level="4.1.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#waterfall-charts"><i class="fa fa-check"></i><b>4.1.7</b> Waterfall Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#time-series-graphics"><i class="fa fa-check"></i><b>4.2</b> Time-Series Graphics</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#waterfall-charts-again"><i class="fa fa-check"></i><b>4.2.1</b> Waterfall Charts (again)</a></li>
+<li class="chapter" data-level="4.2.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#line-charts"><i class="fa fa-check"></i><b>4.2.2</b> Line Charts</a></li>
+<li class="chapter" data-level="4.2.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#area-charts"><i class="fa fa-check"></i><b>4.2.3</b> Area Charts</a></li>
+<li class="chapter" data-level="4.2.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#gantt-charts"><i class="fa fa-check"></i><b>4.2.4</b> Gantt Charts</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#statisticaldistribution-insights"><i class="fa fa-check"></i><b>4.3</b> Statistical/Distribution Insights</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#histograms"><i class="fa fa-check"></i><b>4.3.1</b> Histograms</a></li>
+<li class="chapter" data-level="4.3.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#box-plots"><i class="fa fa-check"></i><b>4.3.2</b> Box Plots</a></li>
+<li class="chapter" data-level="4.3.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#violin-charts"><i class="fa fa-check"></i><b>4.3.3</b> Violin Charts</a></li>
+<li class="chapter" data-level="4.3.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#rainclouds"><i class="fa fa-check"></i><b>4.3.4</b> Rainclouds</a></li>
+<li class="chapter" data-level="4.3.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#candlestick-charts"><i class="fa fa-check"></i><b>4.3.5</b> Candlestick Charts</a></li>
+<li class="chapter" data-level="4.3.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#stem-and-leaf-plots"><i class="fa fa-check"></i><b>4.3.6</b> Stem-and-Leaf Plots</a></li>
+<li class="chapter" data-level="4.3.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#principal-components"><i class="fa fa-check"></i><b>4.3.7</b> Principal Components</a></li>
+<li class="chapter" data-level="4.3.8" data-path="graphical-zoo.html"><a href="graphical-zoo.html#scree-plots"><i class="fa fa-check"></i><b>4.3.8</b> Scree Plots</a></li>
+<li class="chapter" data-level="4.3.9" data-path="graphical-zoo.html"><a href="graphical-zoo.html#multivariate-plots"><i class="fa fa-check"></i><b>4.3.9</b> Multivariate Plots</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#geographic-and-spatial-data"><i class="fa fa-check"></i><b>4.4</b> Geographic and Spatial Data</a>
+<ul>
+<li class="chapter" data-level="4.4.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#choropleth"><i class="fa fa-check"></i><b>4.4.1</b> Choropleth</a></li>
+<li class="chapter" data-level="4.4.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#dot-density"><i class="fa fa-check"></i><b>4.4.2</b> Dot Density</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#relationships-between-variables"><i class="fa fa-check"></i><b>4.5</b> Relationships Between Variables</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#scatterplots"><i class="fa fa-check"></i><b>4.5.1</b> Scatterplots</a></li>
+<li class="chapter" data-level="4.5.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#bubble-charts"><i class="fa fa-check"></i><b>4.5.2</b> Bubble Charts</a></li>
+<li class="chapter" data-level="4.5.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#correlation-matrix"><i class="fa fa-check"></i><b>4.5.3</b> Correlation Matrix</a></li>
+<li class="chapter" data-level="4.5.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#parallel-coordinates"><i class="fa fa-check"></i><b>4.5.4</b> Parallel Coordinates</a></li>
+</ul></li>
+<li class="chapter" data-level="4.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#flows-and-nested-data"><i class="fa fa-check"></i><b>4.6</b> Flows and Nested Data</a>
+<ul>
+<li class="chapter" data-level="4.6.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#pie-charts"><i class="fa fa-check"></i><b>4.6.1</b> Pie Charts</a></li>
+<li class="chapter" data-level="4.6.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#funnelpyramid-charts"><i class="fa fa-check"></i><b>4.6.2</b> Funnel/Pyramid Charts</a></li>
+<li class="chapter" data-level="4.6.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#treemap"><i class="fa fa-check"></i><b>4.6.3</b> Treemap</a></li>
+<li class="chapter" data-level="4.6.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#chordarc-diagram"><i class="fa fa-check"></i><b>4.6.4</b> Chord/Arc Diagram</a></li>
+<li class="chapter" data-level="4.6.5" data-path="graphical-zoo.html"><a href="graphical-zoo.html#network-diagram"><i class="fa fa-check"></i><b>4.6.5</b> Network Diagram</a></li>
+<li class="chapter" data-level="4.6.6" data-path="graphical-zoo.html"><a href="graphical-zoo.html#tree-diagram"><i class="fa fa-check"></i><b>4.6.6</b> Tree Diagram</a></li>
+<li class="chapter" data-level="4.6.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#sunburst"><i class="fa fa-check"></i><b>4.6.7</b> Sunburst</a></li>
+</ul></li>
+<li class="chapter" data-level="4.7" data-path="graphical-zoo.html"><a href="graphical-zoo.html#famous-visualizations"><i class="fa fa-check"></i><b>4.7</b> Famous Visualizations</a>
+<ul>
+<li class="chapter" data-level="4.7.1" data-path="graphical-zoo.html"><a href="graphical-zoo.html#nightingale-plot"><i class="fa fa-check"></i><b>4.7.1</b> Nightingale Plot</a></li>
+<li class="chapter" data-level="4.7.2" data-path="graphical-zoo.html"><a href="graphical-zoo.html#napoleans-march"><i class="fa fa-check"></i><b>4.7.2</b> Napolean’s March</a></li>
+<li class="chapter" data-level="4.7.3" data-path="graphical-zoo.html"><a href="graphical-zoo.html#john-snows-cholera-outbreak"><i class="fa fa-check"></i><b>4.7.3</b> John Snow’s Cholera Outbreak</a></li>
+<li class="chapter" data-level="4.7.4" data-path="graphical-zoo.html"><a href="graphical-zoo.html#election-maps-trumps-vs-clintons"><i class="fa fa-check"></i><b>4.7.4</b> Election Maps (Trump’s vs Clinton’s)</a></li>
+</ul></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https:\\www.kirbywhite.io" target="blank">Created by Kirby White</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">The Joy of Data Visualization</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="graphical-zoo" class="section level1" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Graphical Zoo</h1>
+<p>This chapter serves as a menagerie of different types of visualization. My intention is to quickly let you see a variety of chart types, point out their encoding mechanisms, and help you become more familiar with the role of data types and why they are so fundamental to visualization (even though it seems very boring).</p>
+<p>The graphics are arranged into categories based on their primary purpose or features, and not necessarily their similarity. For instance, histograms and bar charts can look nearly identical but have radically different purposes. Each category serves as the basis for the majority of the chapters in this book, which is where you can find additional examples, reproducible code snippets, common misinterpretations or ways to abuse a chart, and possibly the history of each chart or anecdotes about their famous (or infamous) uses!</p>
+<div id="comparing-multiple-categories" class="section level2" number="4.1">
+<h2><span class="header-section-number">4.1</span> Comparing Multiple Categories</h2>
+<div id="bar-charts" class="section level3" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Bar Charts</h3>
+<p>Bar charts are one of the most fundamental graphs. They always have at least one categorical (i.e., either nominal or ordinal) and one continuous (i.e., interval or ratio) variable. The categorical variable is encoded in the position of each bar. It can help your audience understand the chart better if you put some thought into the order of the bars. If your categorical variable is ordinal (e.g., small, medium, large) then it probably makes sense to ensure that the bars are also in that order. If your variable is nominal, the order may not matter at all, or you’ll want to order them by the value of their corresponding continuous value, perhaps in ascending or descending order.</p>
+<p>This example comes from a dataset of jewelry sales, specifically diamonds. Each diamond is graded based on the quality of its cut (ordinally, from fair to ideal) and has a sale price. When we calculate the average price for each quality grade, we can visualize it with this bar chart:
+<img src="_main_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p>Bar charts can contain more than the two required variables. For instance, this bar chart displays the price of diamonds by cut quality (ordinal) <em>and</em> color clarity (ordinal), and is technically called a grouped bar chart. We make a separate bar for each combination of cut and clarity. The bars are grouped together based on their cut, and put in order of their clarity. The groups are also in order of cut quality. Notice that clarity is encoded two ways: with bar position <em>and</em> with color. The addition of color means that we can avoid printing the label for each clarity over and over again, which would add a lot of clutter to the graph.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p>Another common variant of a bar chart is the <em>stacked bar chart</em>. Like the grouped bar chart, it also requires multiple categorical variables and one continuous variable. Using the same data, we can use a stacked bar chart to examine how often each clarity of diamond is cut into each quality grade. In this case, we are simply counting the number of times each combination appears and using that as our continuous variable.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>This type of chart emphasizes how many diamonds are in each cut quality, but the differing total sizes makes it more difficult to identify the proportions of clarity within each cut. We can change the emphasis with a “100% stacked bar chart,” which makes it much easier to see the proportions within each group, but hides the total size of each group. Let’s take a look:
+<img src="_main_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+</div>
+<div id="marimekko-charts" class="section level3" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Marimekko Charts</h3>
+<p>Marimekko charts are similar to bar charts, but require two continuous variables instead of just one, and still require (at least) one categorical variable. At its simplest, a Marimekko chart is a bar chart that also encodes one continuous variable into the width of each bar, rather than keeping them consistent widths. Take a look at this example to see how we can use two continuous variables in a bar chart:
+<img src="_main_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p>This makes it easy for your viewers to infer a third variable (population density) from the display. For instance, it becomes immediately obvious that Delaware is the most densely populated state while Alaksa is the least.</p>
+<p>Just for fun, let’s also encode a third continuous variable into this graph. We’ll encode the median per-capita-income into the color of each bar:
+<img src="_main_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>While it’s relatively easy to create a graphic like this, it may not be wise. It is probably too much information for a viewer to readily receive and interpret, thus slowing down their ability to identify important insights or generating new questions.</p>
+</div>
+<div id="heatmaps" class="section level3" number="4.1.3">
+<h3><span class="header-section-number">4.1.3</span> Heatmaps</h3>
+<p>Heatmaps are usually used to quickly identify “high” and “low” values by using “hotter” and “cooler” colors. They require at least one categorical and one continuous variable, but very often use two categorical variables. Sometimes the frequency count of each combination of categorical variables acts as the continuous variable, like this example showing how frequently diamonds of a given clarity are cut to a given quality:
+<img src="_main_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p>Here, the frequency count of each combination is encoded into the color of each square. The large contrast in colors make it immediately clear that the most frequently occurring combination is “Ideal” and “VS2” diamonds.</p>
+</div>
+<div id="radar-charts" class="section level3" number="4.1.4">
+<h3><span class="header-section-number">4.1.4</span> Radar Charts</h3>
+<p>Radar charts are a great way to plot several categorical variables, potentially across several groups, each with a corresponding continuous value. Imagine we have a table of a student’s grades in several classes:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Student ID</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>123</td>
+<td>Business</td>
+</tr>
+<tr class="even">
+<td>123</td>
+<td>Psychology</td>
+</tr>
+<tr class="odd">
+<td>123</td>
+<td>English</td>
+</tr>
+<tr class="even">
+<td>123</td>
+<td>Math</td>
+</tr>
+<tr class="odd">
+<td>123</td>
+<td>Science</td>
+</tr>
+</tbody>
+</table>
+<p>We could encode each class in a different location around a circular axis, and then encode each grade with a dot somewhere along the length of the axis. When we connect the dots and fill in the area, it looks like this:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p>These charts have a variety of other names such as polar charts, web charts, spider charts.</p>
+</div>
+<div id="dot-plots" class="section level3" number="4.1.5">
+<h3><span class="header-section-number">4.1.5</span> Dot Plots</h3>
+<p>Dot plots are simple to understand and very flexible with the types of data they accept. At its simplest, they require one continuous variable and one categorical variable with at least two levels (i.e., options).</p>
+<p>Let’s plot the median incomes (in 1975) for two states in the USA:
+<img src="_main_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+</div>
+<div id="gauge-and-bullet-charts" class="section level3" number="4.1.6">
+<h3><span class="header-section-number">4.1.6</span> Gauge and Bullet Charts</h3>
+</div>
+<div id="waterfall-charts" class="section level3" number="4.1.7">
+<h3><span class="header-section-number">4.1.7</span> Waterfall Charts</h3>
+</div>
+</div>
+<div id="time-series-graphics" class="section level2" number="4.2">
+<h2><span class="header-section-number">4.2</span> Time-Series Graphics</h2>
+<div id="waterfall-charts-again" class="section level3" number="4.2.1">
+<h3><span class="header-section-number">4.2.1</span> Waterfall Charts (again)</h3>
+</div>
+<div id="line-charts" class="section level3" number="4.2.2">
+<h3><span class="header-section-number">4.2.2</span> Line Charts</h3>
+</div>
+<div id="area-charts" class="section level3" number="4.2.3">
+<h3><span class="header-section-number">4.2.3</span> Area Charts</h3>
+</div>
+<div id="gantt-charts" class="section level3" number="4.2.4">
+<h3><span class="header-section-number">4.2.4</span> Gantt Charts</h3>
+</div>
+</div>
+<div id="statisticaldistribution-insights" class="section level2" number="4.3">
+<h2><span class="header-section-number">4.3</span> Statistical/Distribution Insights</h2>
+<div id="histograms" class="section level3" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Histograms</h3>
+</div>
+<div id="box-plots" class="section level3" number="4.3.2">
+<h3><span class="header-section-number">4.3.2</span> Box Plots</h3>
+</div>
+<div id="violin-charts" class="section level3" number="4.3.3">
+<h3><span class="header-section-number">4.3.3</span> Violin Charts</h3>
+</div>
+<div id="rainclouds" class="section level3" number="4.3.4">
+<h3><span class="header-section-number">4.3.4</span> Rainclouds</h3>
+</div>
+<div id="candlestick-charts" class="section level3" number="4.3.5">
+<h3><span class="header-section-number">4.3.5</span> Candlestick Charts</h3>
+</div>
+<div id="stem-and-leaf-plots" class="section level3" number="4.3.6">
+<h3><span class="header-section-number">4.3.6</span> Stem-and-Leaf Plots</h3>
+</div>
+<div id="principal-components" class="section level3" number="4.3.7">
+<h3><span class="header-section-number">4.3.7</span> Principal Components</h3>
+</div>
+<div id="scree-plots" class="section level3" number="4.3.8">
+<h3><span class="header-section-number">4.3.8</span> Scree Plots</h3>
+</div>
+<div id="multivariate-plots" class="section level3" number="4.3.9">
+<h3><span class="header-section-number">4.3.9</span> Multivariate Plots</h3>
+<p>Not sure this is a thing, but I want to look into it</p>
+</div>
+</div>
+<div id="geographic-and-spatial-data" class="section level2" number="4.4">
+<h2><span class="header-section-number">4.4</span> Geographic and Spatial Data</h2>
+<div id="choropleth" class="section level3" number="4.4.1">
+<h3><span class="header-section-number">4.4.1</span> Choropleth</h3>
+</div>
+<div id="dot-density" class="section level3" number="4.4.2">
+<h3><span class="header-section-number">4.4.2</span> Dot Density</h3>
+</div>
+</div>
+<div id="relationships-between-variables" class="section level2" number="4.5">
+<h2><span class="header-section-number">4.5</span> Relationships Between Variables</h2>
+<div id="scatterplots" class="section level3" number="4.5.1">
+<h3><span class="header-section-number">4.5.1</span> Scatterplots</h3>
+<p>Scatterplots are another fundamental type of chart to understand. At their simplest, they display the information of two continuous variables. Critically, the values of each variable are displayed as pairs, meaning that each set of values should belong to the same <span class="tooltip"><u>unit</u><span class="tooltiptext">A “unit” can be anything: a person, a business, a location, etc. Each pair of continuous values must belong to the same unit</span></span>.</p>
+<p>Here’s a simple scatterplot of employee attitudes about their work department. Each dot represents a different department (the unit), and the values of each variable are encoded in the position of the dot. The value of each variable is the average number of favorable responses employees within each department gave when asked a particular question, such as, “How do you feel about your opportunities to advance within this department? That variable is encoded in the vertical position of each dot. That is, dots with a <em>higher</em> position indicate <em>more favorable</em> responses than dots with a lower position. The other variable is encoded in the horizontal position of each dot, with higher values being indicated by a position farther to the right.</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p>This is the first “relational” plot because it is primarily intended to examine for the presence of a relationship between the two chosen variables. In this example, someone could argue that employees who are able to learn more skills are more valuable to their employer and are thus more likely to receive a promotion. If you agree with that logic, then you’d expect to see a relationship between these variables, such that departments that are high in one variable are probably high in the other.</p>
+<p>In fact, this relationship can be emphasized by adding a “line of best fit” through the dots, like this:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p>This line has been drawn in such a way that it is as close as possible to every dot in the display. It trends upwards and to the right, indicating that as one variable increases you should also expect the other to increase. There are a <span class="tooltip"><u>significant</u><span class="tooltiptext">get it?</span></span> number of statistical methods to identify whether the portrayed relationship is truly their or is simply <span class="tooltip"><u>spurious</u><span class="tooltiptext">meaning that it’s random or without merit</span></span>.</p>
+<p>Scatterplots can easily accomodate the addition of a categorical variable to investigate relationships across groups. Take a look at this graph showing the relationship between petal length and sepal length of irises, a type of flower:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>This makes it clear that there’s a relationship between the two features, but let’s see what happens when we encode the sub-species of each plant into the dot’s colors:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p>By the way, if you’re like me and don’t remember anything from your biology classes, here’s what petals and sepals are:</p>
+<p><img src="http://classic.plantid.net/Glossary/Sepal_files/image001.png" /></p>
+</div>
+<div id="bubble-charts" class="section level3" number="4.5.2">
+<h3><span class="header-section-number">4.5.2</span> Bubble Charts</h3>
+<p>Bubble charts are a variant of the scatterplot that incorporate a third continuous variable, which is encoded into the size of each dot. Here’s a bubble chart primarily showing the illiteracy and high school graduation rates in each state in the USA. The median income is encoded into the size of each dot, such that states with higher incomes are shown with larger dots:</p>
+<p><img src="_main_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<p>When using multiple encodings to display multiple variables, it becomes critically important to consider which variables to encode with each visual property. Why did I choose to make the area of each dot proportional to income, and not the illiteracy rates? Why did I choose to use area rather than a color gradient? These questions are primarily answered by the information contained in <mark>{chapter on encoding precision}</mark>.</p>
+</div>
+<div id="correlation-matrix" class="section level3" number="4.5.3">
+<h3><span class="header-section-number">4.5.3</span> Correlation Matrix</h3>
+</div>
+<div id="parallel-coordinates" class="section level3" number="4.5.4">
+<h3><span class="header-section-number">4.5.4</span> Parallel Coordinates</h3>
+</div>
+</div>
+<div id="flows-and-nested-data" class="section level2" number="4.6">
+<h2><span class="header-section-number">4.6</span> Flows and Nested Data</h2>
+<div id="pie-charts" class="section level3" number="4.6.1">
+<h3><span class="header-section-number">4.6.1</span> Pie Charts</h3>
+</div>
+<div id="funnelpyramid-charts" class="section level3" number="4.6.2">
+<h3><span class="header-section-number">4.6.2</span> Funnel/Pyramid Charts</h3>
+</div>
+<div id="treemap" class="section level3" number="4.6.3">
+<h3><span class="header-section-number">4.6.3</span> Treemap</h3>
+</div>
+<div id="chordarc-diagram" class="section level3" number="4.6.4">
+<h3><span class="header-section-number">4.6.4</span> Chord/Arc Diagram</h3>
+<p>Chord and Arc diagrams are one type of network diagram, which will be further explored soon. These diagrams really require only two categorical variables, but they must be paired together so that one variable is the <em>source</em> and to the other’s <em>target</em> or destination. For instance, if you were to map your movements in the day, it might look something like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th>Source</th>
+<th>Target</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Home</td>
+<td>School</td>
+</tr>
+<tr class="even">
+<td>School</td>
+<td>Home</td>
+</tr>
+<tr class="odd">
+<td>Home</td>
+<td>Gym</td>
+</tr>
+<tr class="even">
+<td>Gym</td>
+<td>Home</td>
+</tr>
+<tr class="odd">
+<td>Home</td>
+<td>Restaurant</td>
+</tr>
+<tr class="even">
+<td>Restaurant</td>
+<td>Movie</td>
+</tr>
+<tr class="odd">
+<td>Movie</td>
+<td>Home</td>
+</tr>
+</tbody>
+</table>
+<p>Notice that these might be in a chronological order, but that the ordering of stops isn’t displayed in this chord diagram of your movements:</p>
+<div id="htmlwidget-7870599ab097583002d6" style="width:672px;height:480px;" class="chorddiag html-widget"></div>
+<script type="application/json" data-for="htmlwidget-7870599ab097583002d6">{"x":{"matrix":[[0,1,1,0,1],[1,0,0,0,0],[1,1,0,0,0],[1,0,0,0,0],[0,0,0,1,0]],"options":{"type":"directional","width":null,"height":null,"margin":100,"showGroupnames":true,"groupNames":["Home","School","Gym","Restaurant","Movie"],"groupColors":["#1B9E77","#D95F02","#7570B3","#E7298A","#66A61E"],"groupThickness":0.1,"groupPadding":0.0698131700797732,"groupnamePadding":[20,20,20,20,20],"groupnameFontsize":18,"groupedgeColor":null,"chordedgeColor":"#808080","categoryNames":null,"categorynamePadding":100,"categorynameFontsize":28,"showTicks":false,"tickInterval":0.1,"ticklabelFontsize":10,"fadeLevel":0.1,"showTooltips":true,"showZeroTooltips":true,"tooltipNames":["Home","School","Gym","Restaurant","Movie"],"tooltipFontsize":12,"tooltipUnit":"","tooltipGroupConnector":" &#x25B6; ","precision":"null","clickAction":null,"clickGroupAction":null}},"evals":[],"jsHooks":[]}</script>
+<p>This can be confusing to interpret at first, but it’s a clever way of showing the movements. Each location (a source or target) is given a bar around the edge of a circle. Then, chords are drawn between locations that were connected by your movements at some point. The width of the chord is proportional to the number of connections between the two locations. If the two ends of a chord are equal widths, this tells you that those locations were the source and target an equal number of times. If a chord is wider at one end than the other, then the location at the wider end was the source more often than the target.</p>
+</div>
+<div id="network-diagram" class="section level3" number="4.6.5">
+<h3><span class="header-section-number">4.6.5</span> Network Diagram</h3>
+</div>
+<div id="tree-diagram" class="section level3" number="4.6.6">
+<h3><span class="header-section-number">4.6.6</span> Tree Diagram</h3>
+</div>
+<div id="sunburst" class="section level3" number="4.6.7">
+<h3><span class="header-section-number">4.6.7</span> Sunburst</h3>
+</div>
+</div>
+<div id="famous-visualizations" class="section level2" number="4.7">
+<h2><span class="header-section-number">4.7</span> Famous Visualizations</h2>
+<div id="nightingale-plot" class="section level3" number="4.7.1">
+<h3><span class="header-section-number">4.7.1</span> Nightingale Plot</h3>
+</div>
+<div id="napoleans-march" class="section level3" number="4.7.2">
+<h3><span class="header-section-number">4.7.2</span> Napolean’s March</h3>
+</div>
+<div id="john-snows-cholera-outbreak" class="section level3" number="4.7.3">
+<h3><span class="header-section-number">4.7.3</span> John Snow’s Cholera Outbreak</h3>
+</div>
+<div id="election-maps-trumps-vs-clintons" class="section level3" number="4.7.4">
+<h3><span class="header-section-number">4.7.4</span> Election Maps (Trump’s vs Clinton’s)</h3>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="anatomy-of-data.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans serif",
+"size": 3
+},
+"edit": {
+"link": "https://github.com/Unperterbed/The-Joy-of-Data-Visualization/edit/main/04-Graphical-Zoo.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection",
+"scroll_highlight": true
+},
+"fig_caption": true,
+"number_sections": true,
+"split_by": "section"
+});
+});
+</script>
+
+</body>
+
+</html>

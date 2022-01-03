@@ -16,7 +16,7 @@ knitr::include_app('https://alt-f11.shinyapps.io/dual_plot_test/', height = '600
 
 Many data scientists and analysts write their code in an integrated development environment (IDE). An IDE is a software program that brings a suite of useful tools and capabilities to help write code more quickly and easily.
 
-RStudio is an IDE designed for data science applications. It is optimized for R, but can also has features for working with other languages such as Python, SQL, Bash, and more.
+RStudio is an IDE designed for data science applications. It is optimized for R, but also has features for working with other languages such as Python, SQL, Bash, and more.
 
 You can download a free version of RStudio, here: [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/).
 
@@ -38,3 +38,8 @@ This book makes heavy use of these packages/libraries for each language:
   * `pandas`
   * `matplotlib`
   * `seaborn`
+
+
+## Book Organization
+
+This book is designed to primarily offer practical examples and replicable code to create data visualizations. You're welcome to jump straight to a chapter or section without reading anything else in the book.

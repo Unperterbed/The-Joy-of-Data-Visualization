@@ -1,0 +1,115 @@
+--- 
+title: "The Joy of Data Visualization"
+author: "Kirby D. White"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+url: https://unperterbed.github.io/The-Joy-of-Data-Visualization/
+cover-image: images/JDV_book_cover.png
+description: |
+  This book is designed to inspire others to see and communicate more of their data through reproducible examples.
+link-citations: yes
+github-repo: Unperterbed/The-Joy-of-Data-Visualization
+---
+
+# About {-}
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# Resources {-}
+
+## Data Repositories
+
+These sites contain numerous data files which can be very useful for practicing all sorts of technology skills. This is a "living" list (meaning it will be updated as I learn more) and are in no particular order:
+
+  * [Google Public Data](https://www.google.com/publicdata/directory)
+  * [Kaggle Datasets](https://www.kaggle.com/datasets)
+  * [Eastern Michigan University Data Directory](https://guides.emich.edu/data/free-data?fbclid=IwAR0td1ZU9iHsZZnjXrNad2OyCaOHa_FUdPyfmDrHBZkUmDFgsHS3oEbOeQE)
+  * [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php?fbclid=IwAR0r8QYX-UOM-l9fL5XW_SxZ1U5zT0bWnMs6QKfKns24Wl7tGMUNQZ7XSmc)
+
+<!--chapter:end:00-Resources.Rmd-->
+
+# Why Data Visualization
+
+Why does data need to be visualized?
+
+## History of Data Visualization
+
+William Playfair, etc.
+
+## Our Brains Want It
+
+The brain has a *lot* of muscle for receiving and interpreting spatial information. Conversely, your brain has almost no ability to readily read, understand, and generate new questions about a bland table of numbers -- even small ones.
+
+(show table and scatter plot to demonstrate)
+
+## Key Resources and Inspiration
+  * [Tableau Gallery](https://public.tableau.com/en-gb/s/viz-gallery)
+  * [Storytelling With Data](https://www.storytellingwithdata.com/)
+  * [Learning To See Data](https://dataliteracy.com/product/learning-to-see-data-book/) by Ben Jones, Co-Founder & CEO at [Data Literacy](https://dataliteracy.com/)
+  * [The Visual Display of Quantitative Data](https://www.edwardtufte.com/tufte/books_vdqi) by Edward Tufte
+  * [Better Data Visualizations](https://policyviz.com/pv_books/better-data-visualizations-a-guide-for-scholars-researchers-and-wonks/) by [Jonathan Schwabish](https://www.urban.org/author/jonathan-schwabish/publications), Senior Fellow at the Urban Institute
+  * [R Graphics Cookbook](https://r-graphics.org/)
+  * How Charts Lie, by [Alberto Cairo](http://albertocairo.com/)
+  * [Statistics Globe](https://statisticsglobe.com/)
+
+<!--chapter:end:01-Why-Data-Visualization.Rmd-->
+
+
+# Getting Started
+
+Placeholder
+
+
+## Interactive and Replicable
+## Developer Environments and Programming Languages
+## Book Organization
+
+<!--chapter:end:02-Getting-Started.Rmd-->
+
+
+# Anatomy of Data
+
+Placeholder
+
+
+## What is data? What is information?
+## Where does data come from?
+## What are the types of data?
+## How do we visualize data?
+## How does the computer store data?
+
+<!--chapter:end:03-Theory-Of-Visualization.Rmd-->
+
+
+# Graphical Zoo
+
+Placeholder
+
+
+## Comparing Categories
+### Bar Charts
+### Marimekko Charts
+### Heatmaps
+### Dot Plots
+### Gauge and Bullet Charts
+### Bubble Charts
+### Waterfall Charts
+## Time
+### Waterfall Charts (again)
+### Line Charts
+### Area Chart
+### Gantt Chart
+### 
+## Distribution
+## Geographic and Spatial
+## Relationships
+## Flows and Nested Data
+
+<!--chapter:end:05-Graphical-Zoo.Rmd-->
+

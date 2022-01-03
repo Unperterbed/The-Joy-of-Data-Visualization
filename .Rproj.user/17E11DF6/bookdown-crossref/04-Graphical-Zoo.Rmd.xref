@@ -1,0 +1,46 @@
+h1:graphical-zoo Graphical Zoo
+h2:comparing-multiple-categories Comparing Multiple Categories
+h3:bar-charts Bar Charts
+h3:marimekko-charts Marimekko Charts
+h3:heatmaps Heatmaps
+h3:radar-charts Radar Charts
+h3:dot-plots Dot Plots
+h3:gauge-and-bullet-charts Gauge and Bullet Charts
+h3:waterfall-charts Waterfall Charts
+h2:time-series-graphics Time-Series Graphics
+h3:waterfall-charts-again Waterfall Charts (again)
+h3:line-charts Line Charts
+h3:area-charts Area Charts
+h3:gantt-charts Gantt Charts
+h2:statisticaldistribution-insights Statistical/Distribution Insights
+h3:histograms Histograms
+h3:box-plots Box Plots
+h3:violin-charts Violin Charts
+h3:rainclouds Rainclouds
+h3:candlestick-charts Candlestick Charts
+h3:stem-and-leaf-plots Stem-and-Leaf Plots
+h3:principal-components Principal Components
+h3:scree-plots Scree Plots
+h3:multivariate-plots Multivariate Plots
+h2:geographic-and-spatial-data Geographic and Spatial Data
+h3:choropleth Choropleth
+h3:dot-density Dot Density
+h2:relationships-between-variables Relationships Between Variables
+h3:scatterplots Scatterplots
+h3:bubble-charts Bubble Charts
+h3:correlation-matrix Correlation Matrix
+h3:parallel-coordinates Parallel Coordinates
+h2:flows-and-nested-data Flows and Nested Data
+h3:pie-charts Pie Charts
+h3:funnelpyramid-charts Funnel/Pyramid Charts
+h3:treemap Treemap
+h3:chordarc-diagram Chord/Arc Diagram
+h3:network-diagram Network Diagram
+h3:tree-diagram Tree Diagram
+h3:sunburst Sunburst
+h2:famous-visualizations Famous Visualizations
+h3:nightingale-plot Nightingale Plot
+h3:napoleans-march Napolean’s March
+h3:john-snows-cholera-outbreak John Snow’s Cholera Outbreak
+h3:election-maps-trumps-vs-clintons Election Maps (Trump’s vs Clinton’s)
+

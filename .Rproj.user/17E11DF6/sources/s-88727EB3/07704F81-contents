@@ -1,0 +1,176 @@
+--- 
+title: "The Joy of Data Visualization"
+author: "Kirby D. White"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+url: https://unperterbed.github.io/The-Joy-of-Data-Visualization/
+cover-image: images/JDV_book_cover.png
+description: |
+  This book is designed to inspire others to see and communicate more of their data through reproducible examples.
+link-citations: yes
+github-repo: Unperterbed/The-Joy-of-Data-Visualization
+---
+
+# About {-}
+
+Placeholder
+
+
+
+<!--chapter:end:index.Rmd-->
+
+# Resources {-}
+
+## Data Repositories
+
+These sites contain numerous data files which can be very useful for practicing all sorts of technology skills. This is a "living" list (meaning it will be updated as I learn more) and are in no particular order:
+
+  * [Google Public Data](https://www.google.com/publicdata/directory)
+  * [Kaggle Datasets](https://www.kaggle.com/datasets)
+  * [Eastern Michigan University Data Directory](https://guides.emich.edu/data/free-data?fbclid=IwAR0td1ZU9iHsZZnjXrNad2OyCaOHa_FUdPyfmDrHBZkUmDFgsHS3oEbOeQE)
+  * [UCI Machine Learning Repository](https://archive.ics.uci.edu/ml/index.php?fbclid=IwAR0r8QYX-UOM-l9fL5XW_SxZ1U5zT0bWnMs6QKfKns24Wl7tGMUNQZ7XSmc)
+
+<!--chapter:end:00-Resources.Rmd-->
+
+# Why Data Visualization
+
+Why does data need to be visualized?
+
+## History of Data Visualization
+
+William Playfair, etc.
+
+## Our Brains Want It
+
+The brain has a *lot* of muscle for receiving and interpreting spatial information. Conversely, your brain has almost no ability to readily read, understand, and generate new questions about a bland table of numbers -- even small ones.
+
+(show table and scatter plot to demonstrate)
+
+## Key Resources and Inspiration
+  * [Tableau Gallery](https://public.tableau.com/en-gb/s/viz-gallery)
+  * [Storytelling With Data](https://www.storytellingwithdata.com/)
+  * [Learning To See Data](https://dataliteracy.com/product/learning-to-see-data-book/) by Ben Jones, Co-Founder & CEO at [Data Literacy](https://dataliteracy.com/)
+  * [The Visual Display of Quantitative Data](https://www.edwardtufte.com/tufte/books_vdqi) by Edward Tufte
+  * [Better Data Visualizations](https://policyviz.com/pv_books/better-data-visualizations-a-guide-for-scholars-researchers-and-wonks/) by [Jonathan Schwabish](https://www.urban.org/author/jonathan-schwabish/publications), Senior Fellow at the Urban Institute
+  * [R Graphics Cookbook](https://r-graphics.org/)
+  * How Charts Lie, by [Alberto Cairo](http://albertocairo.com/)
+  * [Statistics Globe](https://statisticsglobe.com/)
+
+<!--chapter:end:01-Why-Data-Visualization.Rmd-->
+
+
+# Getting Started
+
+Placeholder
+
+
+## Interactive and Replicable
+## Developer Environments and Programming Languages
+## Book Organization
+
+<!--chapter:end:02-Getting-Started.Rmd-->
+
+
+# Anatomy of Data
+
+Placeholder
+
+
+## What is data? What is information?
+## Where does data come from?
+## What are the types of data?
+## How do we visualize data?
+## How does the computer store data?
+
+<!--chapter:end:03-Theory-Of-Visualization.Rmd-->
+
+# Graphical Zoo
+
+This chapter serves as a menagerie of different types of visualization. My intention is to quickly let you see a variety of chart types, point out their encoding mechanisms, and help you become more familiar with the role of data types and why they are so fundamental to visualization (even though it seems very boring).
+
+The graphics are arranged into categories based on their primary purpose or features, and not necessarily their similarity. For instance, histograms and bar charts can look nearly identical but have radically different purposes. Each category serves as the basis for the majority of the chapters in this book, which is where you can find additional examples, reproducable code snippets, and possibly the history of each chart or anecdotes about their famous (or infamous) uses!
+
+## Comparing Categories
+### Bar Charts
+Bar charts are one of the most fundamental graphs. They always have at least one categorical (i.e., either nominal or ordinal) and one continuous (i.e., interval or ratio) variable. The categorical variable is encoded in the position of each bar. It can help your audience understand the chart better if you put some thought into the order of the bars. If your categorical variable is ordinal (e.g., small, medium, large) then it probably makes sense to ensure that the bars are also in that order. If your variable is nominal, the order may not matter at all, or you'll want to order them by the value of their corresponding continuous value, perhaps in ascending or descending order.
+
+This example comes from a dataset of jewelery sales, specifically diamonds. Each diamond is graded based on the quality of its cut (ordinally, from fair to ideal) and has a sale price. When we calculate the average price for each quality grade, we can visualize it with this bar chart:
+
+```{r echo=FALSE}
+theme_set(theme_minimal())
+theme_update(panel.grid = element_blank())
+library(tidyverse)
+```
+
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- 
+  ggplot2::diamonds %>% 
+  group_by(cut) %>% 
+  summarize(price = mean(price),
+            table = mean(table),
+            depth = mean(depth))
+
+fig <- df %>% 
+  ggplot(aes(x = cut,
+             y = price)) + geom_col() + labs(x = "Cut Quality", y = "Price (in USD)", title = "Diamond Prices by Cut Quality")
+
+fig
+```
+
+Bar charts can contain more than the two required variables. For instance, this bar chart displays the price of diamonds by cut quality (ordinal) _and_ color clarity (ordinal), and is technically called a grouped bar chart. We make a separate bar for each combination of cut and clarity. The bars are grouped together based on their cut, and put in order of their clarity. The groups are also in order of cut quality. Notice that clarity is encoded two ways: with bar position _and_ with color. The addition of color means that we can avoid printing the label for each clarity over and over again, which would add a lot of clutter to the graph.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE}
+df <- 
+  ggplot2::diamonds %>% 
+  group_by(cut, clarity) %>% 
+  summarize(price = mean(price),
+            table = mean(table),
+            depth = mean(depth)) %>% 
+  rename("Clarity"="clarity")
+
+fig <- df %>% 
+  ggplot(aes(x = cut, y = price, fill = Clarity)) + geom_col(position = "dodge") + labs(x = "Cut Quality", y = "Price (in USD)", title = "Diamond Prices by Cut Quality and Color Clarity")
+
+fig
+```
+
+
+### Marimekko Charts
+
+### Heatmaps
+
+### Dot Plots
+
+### Gauge and Bullet Charts
+
+### Bubble Charts
+
+### Waterfall Charts
+
+
+
+
+## Time
+### Waterfall Charts (again)
+
+### Line Charts
+
+### Area Chart
+
+### Gantt Chart
+
+### 
+
+## Distribution
+
+## Geographic and Spatial
+
+## Relationships
+
+## Flows and Nested Data
+
+<!--chapter:end:04-Graphical-Zoo.Rmd-->
+
